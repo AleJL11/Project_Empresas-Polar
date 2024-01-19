@@ -1,0 +1,40 @@
+Comandos de React:
+
+1.- Crear el proyecto React: npx create-react-app (nombre del proyecto).
+2.- Instalar React Router Dom: npm i react-router-dom
+
+Comandos Utiles para React:
+
+- React Bootstrap:
+	npm install react-bootstrap bootstrap
+	import 'bootstrap/dist/css/bootstrap.min.css'; (Colocar en el index.js)
+- Tailwinds css:
+	npm install -D tailwindcss (Comando de instalación)
+	npx tailwindcss init (Comando para crear el .config)
+	content: [
+    		"./src/**/*.{js,jsx,ts,tsx}",
+  	], (agregar en el archivo .config)
+	@tailwind base;
+	@tailwind components;
+	@tailwind utilities; (estas 3 lineas se pegan en el index.css)
+	npm run start (ejecutar el react)
+- React Router Dom
+	npm i react-router-dom
+- Iconos de react: 
+	npm install react-icons --save
+- Swiper (Carruseles)
+	npm i swiper
+- Cookies
+	npm install js-cookie
+- Axios
+	npm install axios
+- Enviar correos
+	npm i @emailjs/browser
+- Libreria PDF
+	npm install jspdf
+	npm install jspdf jspdf-autotable
+- Gráficos
+	npm install recharts
+	npm install victory
+- Libreria Excel
+	npm install xlsx
