@@ -6,6 +6,7 @@ import PerfilImg from "../assets/img/perfil/perfil.png";
 
 // Iconos
 import { TbCameraUp } from "react-icons/tb";
+import { CiLock, CiUnlock } from "react-icons/ci";
 
 // Otros
 import * as comp from "../components/routesComp";
@@ -14,13 +15,15 @@ import axios from "axios";
 
 // React Bootstrap
 import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
 
 export const Perfil = () => {
   const [image, setImage] = useState(null);
   const [imageData, setImageData] = useState(null);
   const [userData, setUserData] = useState({});
   const [successMessage, setSuccessMessage] = useState("");
+
+  const [showPassword, setShowPassword] = useState(false);
+  const [passwordIcon, setPasswordIcon] = useState(<CiLock />);
 
   const [nombreError, setNombreError] = useState("");
   const [apellidoError, setApellidoError] = useState("");
@@ -36,10 +39,7 @@ export const Perfil = () => {
   const regexCedula = /^(V-|E-)\d{1,8}$/;
   const regexDireccion = /^[a-zA-Z0-9 ]+$/;
 
-  const {
-    userId,
-    setImg,
-  } = useAuth();
+  const { userId, setImg } = useAuth();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -55,6 +55,11 @@ export const Perfil = () => {
     };
     fetchData();
   }, []);
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+    setPasswordIcon(showPassword ? <CiLock /> : <CiUnlock />);
+  };
 
   const nombreErrores = {
     formato:
@@ -242,7 +247,7 @@ export const Perfil = () => {
       );
 
       setSuccessMessage("¡Cambios guardados exitosamente!");
-      setImg(response.data.imagen)
+      setImg(response.data.imagen);
       console.log("Usuario actualizado:", response.data);
     } catch (error) {
       console.error("Error al enviar la solicitud PATCH:", error);
@@ -252,23 +257,46 @@ export const Perfil = () => {
   return (
     <>
       <comp.Header />
-      <div className="grid grid-rows place-content-center w-[80%] h-32 mx-auto mt-[-50px] bg-white drop-shadow-xl rounded-2xl">
-        <div className="grid place-content-center w-28 h-28">
-          <img src={Logo} alt="alimentos polar" className="w-max h-26" />
+      <div
+        className="
+      xl:w-[70%]
+      lg:h-[50%]
+      md:w-[70%] md:h-[70%] md:mt-[-8]
+      w-[90%] h-20 mx-auto mt-[-50px]
+      "
+      >
+        <div
+          className="
+          min-[1920px]:w-[40%] min-[1920px]:h-[250px]
+        xl:w-[50%]
+        lg:w-[60%] lg:h-[200px]
+        md:h-[50%]
+        w-[50%] h-20 mx-auto bg-white rounded-t-lg drop-shadow-xl
+        "
+        >
+          <img
+            src={Logo}
+            alt="Logo Empresas Polar"
+            className="
+            md:w-[95%] md:h-full md:p-2
+            w-[95%] h-full mx-auto p-2"
+          />
         </div>
       </div>
       <br />
 
-      <h2 className="text-center mt-4">Perfil de usuario</h2>
+      <h2 className="xl:text-[35px] md:text-[30px] text-center mt-4">
+        Perfil de usuario
+      </h2>
 
       <div className="w-[85%] mx-auto drop-shadow-2xl mt-8">
         <Form>
           <Form.Group className="mb-3" controlId="formBasicImage">
-            <div className="relative w-28 h-28 mx-auto">
+            <div className="xl:w-40 xl:h-40 md:w-32 md:h-32 relative w-28 h-28 mx-auto">
               <img
                 src={image ? image : PerfilImg}
                 alt="Foto de perfil"
-                className="w-28 h-28 rounded-full"
+                className="xl:w-full xl:h-full w-28 h-28 rounded-full"
               />
               <input
                 id="inputImage"
@@ -278,122 +306,180 @@ export const Perfil = () => {
                 className="absolute bottom-1 left-1 opacity-0 w-8 h-8 cursor-pointer"
               />
               <label htmlFor="inputImage" className="cursor-pointer">
-                <TbCameraUp className="absolute bottom-0 left-0 w-8 h-8 bg-white rounded-full p-2" />
+                <TbCameraUp className="xl:w-12 xl:h-12 md:w-10 md:h-10 xl:mt-[-100px] absolute bottom-0 left-0 w-8 h-8 bg-white rounded-full p-2" />
               </label>
             </div>
           </Form.Group>
 
-          <Form.Group className="mb-3" controlId="formBasicNombre">
-            <Form.Control
-              type="text"
-              placeholder={userData.nombre}
-              name="nombre"
-              value={userData.nombre}
-              onChange={(e) => {
-                setUserData({ ...userData, nombre: e.target.value });
-                validarNombre(e.target.value);
-              }}
-            />
-          </Form.Group>
-          {nombreError && <p className="text-red-500">{nombreError}</p>}
+          <div className="xl:grid-cols-2 xl:w-[80%] xl:mx-auto w-full h-auto grid grid-cols-1 place-items-center">
+            <Form.Group
+              className="min-[2250px]:w-[50%] xl:grid-cols-1 xl:flex xl:flex-col xl:justify-center flex flex-col justify-center mb-3"
+              controlId="formBasicNombre"
+            >
+              <Form.Label className="xl:text-[35px] lg:text-[30px] md:text-[27px] md:mr-12">
+                Nombre del usuario:
+              </Form.Label>
+              <input
+                type="text"
+                placeholder={userData.nombre}
+                name="nombre"
+                value={userData.nombre}
+                onChange={(e) => {
+                  setUserData({ ...userData, nombre: e.target.value });
+                  validarNombre(e.target.value);
+                }}
+                className="min-[1920px]:w-[500px] lg:w-[400px] lg:h-16 lg:text-[30px] md:w-[320px] md:text-[25px] md:h-14 w-[200px] h-10 rounded-lg p-2 border-2 border-slate-400"
+              />
+            </Form.Group>
+            {nombreError && <p className="xl:text-[30px] md:text-[25px] text-red-500">{nombreError}</p>}
 
-          <Form.Group className="mb-3" controlId="formBasicApellido">
-            <Form.Control
-              type="text"
-              name="apellido"
-              placeholder={userData.apellido}
-              value={userData.apellido}
-              onChange={(e) => {
-                setUserData({ ...userData, apellido: e.target.value });
-                validarApellido(e.target.value);
-              }}
-            />
-          </Form.Group>
-          {apellidoError && <p className="text-red-500">{apellidoError}</p>}
+            <Form.Group
+              className="min-[2250px]:w-[50%] xl:grid-cols-1 xl:flex xl:flex-col xl:justify-center flex flex-col justify-center mb-3"
+              controlId="formBasicApellido"
+            >
+              <Form.Label className="xl:text-[35px] lg:text-[30px] md:text-[27px] md:mr-12">
+                Apellido del usuario:
+              </Form.Label>
+              <input
+                type="text"
+                name="apellido"
+                placeholder={userData.apellido}
+                value={userData.apellido}
+                onChange={(e) => {
+                  setUserData({ ...userData, apellido: e.target.value });
+                  validarApellido(e.target.value);
+                }}
+                className="min-[1920px]:w-[500px] lg:w-[400px] lg:h-16 lg:text-[30px] md:w-[320px] md:text-[25px] md:h-14 w-[200px] h-10 rounded-lg p-2 border-2 border-slate-400"
+              />
+            </Form.Group>
+            {apellidoError && <p className="xl:text-[30px] md:text-[25px] text-red-500">{apellidoError}</p>}
 
-          <Form.Group className="mb-3" controlId="formBasicCedula">
-            <Form.Control
-              type="text"
-              name="cedula"
-              placeholder={userData.cedula}
-              value={userData.cedula}
-              onChange={(e) => {
-                setUserData({ ...userData, cedula: e.target.value });
-                validarCedula(e.target.value);
-              }}
-            />
-          </Form.Group>
-          {cedulaError && <p className="text-red-500">{cedulaError}</p>}
+            <Form.Group
+              className="min-[2250px]:w-[50%] xl:grid-cols-1 xl:flex xl:flex-col xl:justify-center flex flex-col justify-center mb-3"
+              controlId="formBasicCedula"
+            >
+              <Form.Label className="xl:text-[35px] lg:text-[30px] md:text-[27px] md:mr-[60px]">
+                Cédula del usuario:
+              </Form.Label>
+              <input
+                type="text"
+                name="cedula"
+                placeholder={userData.cedula}
+                value={userData.cedula}
+                onChange={(e) => {
+                  setUserData({ ...userData, cedula: e.target.value });
+                  validarCedula(e.target.value);
+                }}
+                className="min-[1920px]:w-[500px] lg:w-[400px] lg:h-16 lg:text-[30px] md:w-[320px] md:text-[25px] md:h-14 w-[200px] h-10 rounded-lg p-2 border-2 border-slate-400"
+              />
+            </Form.Group>
+            {cedulaError && <p className="xl:text-[30px] md:text-[25px] text-red-500">{cedulaError}</p>}
 
-          <Form.Group className="mb-3" controlId="formBasicCorreo">
-            <Form.Control
-              type="text"
-              name="correo"
-              placeholder={userData.correo}
-              value={userData.correo}
-              onChange={(e) => {
-                setUserData({ ...userData, correo: e.target.value });
-                validarCorreo(e.target.value);
-              }}
-            />
-          </Form.Group>
-          {emailError && <p className="text-red-500">{emailError}</p>}
+            <Form.Group
+              className="min-[2250px]:w-[50%] xl:grid-cols-1 xl:flex xl:flex-col xl:justify-center flex flex-col justify-center mb-3"
+              controlId="formBasicCorreo"
+            >
+              <Form.Label className="xl:text-[35px] lg:text-[30px] md:text-[27px] md:mr-16">
+                Correo del usuario:
+              </Form.Label>
+              <input
+                type="text"
+                name="correo"
+                placeholder={userData.correo}
+                value={userData.correo}
+                onChange={(e) => {
+                  setUserData({ ...userData, correo: e.target.value });
+                  validarCorreo(e.target.value);
+                }}
+                className="min-[1920px]:w-[500px] lg:w-[400px] lg:h-16 lg:text-[30px] md:w-[320px] md:text-[25px] md:h-14 w-[200px] h-10 rounded-lg p-2 border-2 border-slate-400"
+              />
+            </Form.Group>
+            {emailError && <p className="xl:text-[30px] md:text-[25px] text-red-500">{emailError}</p>}
 
-          <Form.Group className="mb-3" controlId="formNumeroTelefono">
-            <Form.Control
-              type="text"
-              name="nro_tlf"
-              placeholder={userData.nro_tlf}
-              value={userData.nro_tlf}
-              onChange={(e) => {
-                setUserData({ ...userData, nro_tlf: e.target.value });
-                validarTelefono(e.target.value);
-              }}
-            />
-          </Form.Group>
-          {telefonoError && <p className="text-red-500">{telefonoError}</p>}
+            <Form.Group
+              className="min-[2250px]:w-[50%] xl:grid-cols-1 xl:flex xl:flex-col xl:justify-center flex flex-col justify-center mb-3"
+              controlId="formNumeroTelefono"
+            >
+              <Form.Label className="xl:text-[35px] lg:text-[30px] md:text-[27px] md:mr-12">
+                Teléfono del usuario:
+              </Form.Label>
+              <input
+                type="text"
+                name="nro_tlf"
+                placeholder={userData.nro_tlf}
+                value={userData.nro_tlf}
+                onChange={(e) => {
+                  setUserData({ ...userData, nro_tlf: e.target.value });
+                  validarTelefono(e.target.value);
+                }}
+                className="min-[1920px]:w-[500px] lg:w-[400px] lg:h-16 lg:text-[30px] md:w-[320px] md:text-[25px] md:h-14 w-[200px] h-10 rounded-lg p-2 border-2 border-slate-400"
+              />
+            </Form.Group>
+            {telefonoError && <p className="xl:text-[30px] md:text-[25px] text-red-500">{telefonoError}</p>}
 
-          <Form.Group className="mb-3" controlId="formNumeroDireccion">
-            <Form.Control
-              type="text"
-              name="direccion"
-              placeholder={userData.direccion}
-              value={userData.direccion}
-              onChange={(e) => {
-                setUserData({ ...userData, direccion: e.target.value });
-                validarDireccion(e.target.value);
-              }}
-            />
-          </Form.Group>
-          {direccionError && <p className="text-red-500">{direccionError}</p>}
+            <Form.Group
+              className="min-[2250px]:w-[50%] xl:grid-cols-2 xl:flex xl:flex-col xl:justify-center flex flex-col justify-center mb-3"
+              controlId="formNumeroDireccion"
+            >
+              <Form.Label className="xl:text-[35px] lg:text-[30px] md:text-[27px] md:mr-10">
+                Dirección del usuario:
+              </Form.Label>
+              <input
+                type="text"
+                name="direccion"
+                placeholder={userData.direccion}
+                value={userData.direccion}
+                onChange={(e) => {
+                  setUserData({ ...userData, direccion: e.target.value });
+                  validarDireccion(e.target.value);
+                }}
+                className="min-[1920px]:w-[500px] lg:w-[400px] lg:h-16 lg:text-[30px] md:w-[320px] md:text-[25px] md:h-14 w-[200px] h-10 rounded-lg p-2 border-2 border-slate-400"
+              />
+            </Form.Group>
+            {direccionError && <p className="xl:text-[30px] md:text-[25px] text-red-500">{direccionError}</p>}
 
-          <Form.Group className="mb-3" controlId="formNumeroContraseña">
-            <Form.Control
-              type="text"
-              name="clave"
-              placeholder={userData.clave}
-              value={userData.clave}
-              onChange={(e) => {
-                setUserData({ ...userData, clave: e.target.value });
-                validarPassword(e.target.value);
-              }}
-            />
-          </Form.Group>
-          {contrasenaError && <p className="text-red-500">{contrasenaError}</p>}
-
-          <Button
+            <Form.Group
+              className="min-[2250px]:w-[50%] xl:grid-cols-1 xl:flex xl:flex-col xl:justify-center flex flex-col justify-center mb-3"
+              controlId="formNumeroContraseña"
+            >
+              <Form.Label className="xl:text-[35px] lg:text-[30px] md:text-[27px] md:mr-5">
+                Contraseña del usuario:
+              </Form.Label>
+              <input
+                type={showPassword ? "text" : "password"}
+                name="clave"
+                placeholder={userData.clave}
+                value={userData.clave}
+                onChange={(e) => {
+                  setUserData({ ...userData, clave: e.target.value });
+                  validarPassword(e.target.value);
+                }}
+                className="min-[1920px]:w-[500px] lg:w-[400px] lg:h-16 lg:text-[30px] md:w-[320px] md:text-[25px] md:h-14 w-[200px] h-10 rounded-lg p-2 border-2 border-slate-400"
+              />
+              <i
+                className="min-[1920px]:ml-[450px] xl:mt-14 lg:text-[35px] lg:ml-[350px] lg:mt-12 md:text-[30px] md:mt-11 md:ml-[250px] absolute text-xl mt-8 ml-40"
+                onClick={togglePasswordVisibility}
+              >
+                {passwordIcon}
+              </i>
+            </Form.Group>
+            {contrasenaError && (
+              <p className="xl:text-[30px] md:text-[25px] text-red-500">{contrasenaError}</p>
+            )}
+          </div>
+          <button
             variant="danger"
             type="submit"
-            className="ml-[23%] text-white h-12 w-[60%]"
+            className="xl:text-[30px] xl:w-[25%] xl:h-16 xl:ml-[37%] md:w-[40%] md:text-[25px] md:ml-[30%] md:mt-8 bg-red-600 rounded-lg ml-[17%] text-white h-12 w-[60%]"
             onClick={(e) => {
               e.preventDefault();
               handleSubmit();
             }}
           >
             Guardar Cambios
-          </Button>
+          </button>
           {successMessage && (
-            <p className="text-green-500 text-center mt-4">{successMessage}</p>
+            <p className="xl:text-[30px] md:text-[25px] text-green-500 text-center mt-4">{successMessage}</p>
           )}
         </Form>
       </div>

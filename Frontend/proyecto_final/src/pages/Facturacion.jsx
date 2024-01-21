@@ -343,13 +343,13 @@ export const Facturacion = () => {
           />
         </div>
       </div>
-      <h2 className="text-center mt-4">Facturación de compra</h2>
-      <div className="lg:w-[85%] lg:h-[800px] md:w-[60%] w-[85%] mx-auto drop-shadow-2xl mt-8">
-        <Form>
-          <div className="lg:w-full md:flex md:justify-center md:mx-auto">
-            <div className="lg:w-[50%] lg:h-full md:flex md:flex-col md:w-[90%] md:ml-12">
-              <Form.Group className="lg:h-[33.33%] mb-3" controlId="formBasicNombre">
-                <Form.Label className="lg:text-[25px]">
+      <h2 className="xl:text-[40px] md:text-[30px] text-center mt-4">Facturación de compra</h2>
+      <div className="lg:w-[85%] lg:h-[1000px] lg:mb-[10%] md:h-[980px] md:w-[90%] w-[85%] mx-auto drop-shadow-2xl mt-8">
+        <Form className="md:w-full">
+          <div className="lg:w-full md:w-full md:flex md:justify-center md:mx-auto">
+            <div className="lg:w-[50%] lg:h-full md:flex md:flex-col md:w-full md:ml-12">
+              <Form.Group className="min-[1920px]:w-[700px] xl:w-[500px] lg:h-[33.33%] md:w-[300px] md:mx-auto mb-3 text-center" controlId="formBasicNombre">
+                <Form.Label className="xl:text-[35px] lg:text-[30px] md:text-[27px]">
                   Nombre del usuario
                 </Form.Label>
                 <input
@@ -357,12 +357,12 @@ export const Facturacion = () => {
                   placeholder={userName}
                   value={userName}
                   readOnly
-                  className="lg:w-full lg:h-[50%] lg:text-2xl rounded-lg"
+                  className="lg:w-full lg:h-[50%] lg:text-2xl md:text-[25px] rounded-lg"
                 />
               </Form.Group>
 
-              <Form.Group className="lg:h-[33.33%] mb-3" controlId="formBasicApellido">
-                <Form.Label className="lg:text-[25px]">
+              <Form.Group className="min-[1920px]:w-[700px] xl:w-[500px] lg:h-[33.33%] md:w-[300px] md:mx-auto mb-3 text-center" controlId="formBasicApellido">
+                <Form.Label className="xl:text-[35px] lg:text-[30px] md:text-[27px]">
                   Apellido del usuario
                 </Form.Label>
                 <input
@@ -370,12 +370,12 @@ export const Facturacion = () => {
                   placeholder={userLastName}
                   value={userLastName}
                   readOnly
-                  className="lg:w-full lg:h-[50%] lg:text-2xl rounded-lg"
+                  className="lg:w-full lg:h-[50%] lg:text-2xl md:text-[25px] rounded-lg"
                 />
               </Form.Group>
 
-              <Form.Group className="lg:h-[33.33%] mb-3" controlId="formBasicCedula">
-                <Form.Label className="lg:text-[25px]">
+              <Form.Group className="min-[1920px]:w-[700px] xl:w-[500px] lg:h-[33.33%] md:w-[300px] md:mx-auto mb-3 text-center" controlId="formBasicCedula">
+                <Form.Label className="xl:text-[35px] lg:text-[30px] md:text-[27px]">
                   Cédula del usuario
                 </Form.Label>
                 <input
@@ -383,14 +383,14 @@ export const Facturacion = () => {
                   placeholder={userDNI}
                   value={userDNI}
                   readOnly
-                  className="lg:w-full lg:h-[50%] lg:text-2xl rounded-lg"
+                  className="lg:w-full lg:h-[50%] lg:text-2xl md:text-[25px] rounded-lg"
                 />
               </Form.Group>
             </div>
 
-            <div className="lg:w-[50%] lg:h-full md:flex md:flex-col md:w-[90%] md:ml-12">
-              <Form.Group className="lg:h-[33.33%] mb-3" controlId="formBasicCorreo">
-                <Form.Label className="lg:text-[25px]">
+            <div className="lg:w-[50%] lg:h-full md:flex md:flex-col md:w-full md:ml-12">
+              <Form.Group className="min-[1920px]:w-[700px] xl:w-[500px] lg:h-[33.33%] md:w-[300px] md:mx-auto mb-3 text-center"  controlId="formBasicCorreo">
+                <Form.Label className="xl:text-[35px] lg:text-[30px] md:text-[27px]">
                   Correo del usuario
                 </Form.Label>
                 <input
@@ -398,12 +398,12 @@ export const Facturacion = () => {
                   placeholder={userEmail}
                   value={userEmail}
                   readOnly
-                  className="lg:w-full lg:h-[50%] lg:text-2xl rounded-lg"
+                  className="lg:w-full lg:h-[50%] lg:text-2xl md:text-[25px] rounded-lg"
                 />
               </Form.Group>
 
-              <Form.Group className="lg:h-[33.33%] mb-3" controlId="formNumeroTelefono">
-                <Form.Label className="lg:text-[25px]">
+              <Form.Group className="min-[1920px]:w-[700px] xl:w-[500px] lg:h-[33.33%] md:w-[300px] md:mx-auto mb-3 text-center"  controlId="formNumeroTelefono">
+                <Form.Label className="xl:text-[35px] lg:text-[30px] md:text-[27px]">
                   Número de teléfono del usuario
                 </Form.Label>
                 <input
@@ -411,12 +411,12 @@ export const Facturacion = () => {
                   placeholder={userNroTlf}
                   value={userNroTlf}
                   readOnly
-                  className="lg:w-full lg:h-[50%] lg:text-2xl rounded-lg"
+                  className="lg:w-full lg:h-[50%] lg:text-2xl md:text-[25px] rounded-lg"
                 />
               </Form.Group>
 
-              <Form.Group className="lg:h-[33.33%] mb-3" controlId="formNumeroDirecion">
-                <Form.Label className="lg:text-[25px]">
+              <Form.Group className="min-[1920px]:w-[700px] xl:w-[500px] lg:h-[33.33%] md:w-[300px] md:mx-auto mb-3 text-center"  controlId="formNumeroDirecion">
+                <Form.Label className="xl:text-[35px] lg:text-[30px] md:text-[27px]">
                   Dirección del usuario
                 </Form.Label>
                 <input
@@ -424,23 +424,23 @@ export const Facturacion = () => {
                   placeholder={userDirection}
                   value={userDirection}
                   readOnly
-                  className="lg:w-full lg:h-[50%] lg:text-2xl rounded-lg"
+                  className="lg:w-full lg:h-[50%] lg:text-2xl md:text-[25px] rounded-lg"
                 />
               </Form.Group>
             </div>
           </div>
 
-          <p className="lg:text-[30px] lg:ml-[5%] text-slate-500 ml-[20%] text-lg">
+          <p className="xl:text-[35px] lg:ml-[35%] md:text-[30px] md:mt-16 md:ml-[35%] md:mb-8 text-slate-500 ml-[20%] text-lg">
             Información del producto
           </p>
 
-          <div className="lg:w-full lg:h-[400px] md:flex md:justify-center md:mx-auto">
-            <div className="lg:w-[50%] lg:h-full md:flex md:flex-col md:w-[90%] md:ml-12">
+          <div className="lg:w-full lg:h-[400px] lg:mb-16 md:mb-8 md:flex md:justify-center md:mx-auto">
+            <div className="lg:w-[50%] lg:h-full md:flex md:flex-col md:w-full md:ml-12">
               <Form.Group
-                className="lg:h-[33.33%] mb-3"
+                className="min-[1920px]:w-[700px] xl:w-[500px] lg:h-[33.33%] md:w-[300px] md:mx-auto mb-3 text-center"
                 controlId="formNumeroFactura"
               >
-                <Form.Label className="lg:text-[25px]">
+                <Form.Label className="xl:text-[35px] lg:text-[30px] md:text-[27px]">
                   Número de Factura
                 </Form.Label>
                 <input
@@ -448,75 +448,75 @@ export const Facturacion = () => {
                   placeholder={nextInvoiceNumber}
                   value={nextInvoiceNumber}
                   readOnly
-                  className="lg:w-full lg:h-[50%] lg:text-2xl rounded-lg"
+                  className="lg:w-full lg:h-[50%] lg:text-2xl md:text-[25px] rounded-lg"
                 />
               </Form.Group>
 
-              <Form.Group className="lg:h-[33.33%] mb-3" controlId="formNumeroNombre">
-                <Form.Label className="lg:text-[25px]">Nombre de los productos</Form.Label>
+              <Form.Group className="min-[1920px]:w-[700px] xl:w-[500px] lg:h-[33.33%] md:w-[300px] md:mx-auto mb-3 text-center" controlId="formNumeroNombre">
+                <Form.Label className="xl:text-[35px] lg:text-[30px] md:text-[27px]">Nombre de los productos</Form.Label>
                 <input
                   type="text"
                   placeholder={productInfo.nombres}
                   value={productInfo.nombres}
                   readOnly
-                  className="lg:w-full lg:h-[50%] lg:text-2xl rounded-lg"
+                  className="lg:w-full lg:h-[50%] lg:text-2xl md:text-[25px] rounded-lg"
                 />
               </Form.Group>
 
-              <Form.Group className="lg:h-[33.33%] mb-3" controlId="formNumeroVendedor">
-                <Form.Label className="lg:text-[25px]">Nombre de los vendedores</Form.Label>
+              <Form.Group className="min-[1920px]:w-[700px] xl:w-[500px] lg:h-[33.33%] md:w-[300px] md:mx-auto mb-3 text-center" controlId="formNumeroVendedor">
+                <Form.Label className="xl:text-[35px] lg:text-[30px] md:text-[27px]">Nombre de los vendedores</Form.Label>
                 <input
                   type="text"
                   placeholder={productInfo.vendedores}
                   value={productInfo.vendedores}
                   readOnly
-                  className="lg:w-full lg:h-[50%] lg:text-2xl rounded-lg"
+                  className="lg:w-full lg:h-[50%] lg:text-2xl md:text-[25px] rounded-lg"
                 />
               </Form.Group>
             </div>
 
-            <div className="lg:w-[50%] lg:h-full md:flex md:flex-col md:w-[90%] md:ml-12">
-              <Form.Group className="lg:h-[25%] mb-3" controlId="formNumeroPrecioUnitario">
-                <Form.Label className="lg:text-[25px]">Precio Unitario por producto</Form.Label>
+            <div className="lg:w-[50%] lg:h-full md:flex md:flex-col md:w-full md:ml-12">
+              <Form.Group className="min-[1920px]:w-[700px] xl:w-[500px] lg:h-[33.33%] md:w-[300px] md:mx-auto mb-3 text-center" controlId="formNumeroPrecioUnitario">
+                <Form.Label className="xl:text-[35px] lg:text-[30px] md:text-[27px]">Precio Unitario por producto</Form.Label>
                 <input
                   type="text"
                   placeholder={productInfo.preciosUnitarios}
                   value={productInfo.preciosUnitarios}
                   readOnly
-                  className="lg:w-full lg:h-[50%] lg:text-2xl rounded-lg"
+                  className="lg:w-full lg:h-[50%] lg:text-2xl md:text-[25px] rounded-lg"
                 />
               </Form.Group>
 
-              <Form.Group className="lg:h-[25%] mb-3" controlId="formNumeroCantidad">
-                <Form.Label className="lg:text-[25px]">Cantidades por producto</Form.Label>
+              <Form.Group className="min-[1920px]:w-[700px] xl:w-[500px] lg:h-[33.33%] md:w-[300px] md:mx-auto mb-3 text-center" controlId="formNumeroCantidad">
+                <Form.Label className="xl:text-[35px] lg:text-[30px] md:text-[27px]">Cantidades por producto</Form.Label>
                 <input
                   type="text"
                   placeholder={productInfo.cantidades}
                   value={productInfo.cantidades}
                   readOnly
-                  className="lg:w-full lg:h-[50%] lg:text-2xl rounded-lg"
+                  className="lg:w-full lg:h-[50%] lg:text-2xl md:text-[25px] rounded-lg"
                 />
               </Form.Group>
 
-              <Form.Group className="lg:h-[25%] mb-3" controlId="formNumeroSubTotal">
-                <Form.Label className="lg:text-[25px]">Sub-total por producto</Form.Label>
+              <Form.Group className="min-[1920px]:w-[700px] xl:w-[500px] lg:h-[33.33%] md:w-[300px] md:mx-auto mb-3 text-center" controlId="formNumeroSubTotal">
+                <Form.Label className="xl:text-[35px] lg:text-[30px] md:text-[27px]">Sub-total por producto</Form.Label>
                 <input
                   type="text"
                   placeholder={productInfo.subtotales}
                   value={productInfo.subtotales}
                   readOnly
-                  className="lg:w-full lg:h-[50%] lg:text-2xl rounded-lg"
+                  className="lg:w-full lg:h-[50%] lg:text-2xl md:text-[25px] rounded-lg"
                 />
               </Form.Group>
 
-              <Form.Group className="lg:h-[25%] mb-3" controlId="formNumeroTotal">
-                <Form.Label className="lg:text-[25px]">Total por producto</Form.Label>
+              <Form.Group className="min-[1920px]:w-[700px] xl:w-[500px] lg:h-[33.33%] md:w-[300px] md:mx-auto mb-3 text-center" controlId="formNumeroTotal">
+                <Form.Label className="xl:text-[35px] lg:text-[30px] md:text-[27px]">Total por producto</Form.Label>
                 <input
                   type="number"
                   placeholder={productInfo.total}
                   value={productInfo.total}
                   readOnly
-                  className="lg:w-full lg:h-[50%] lg:text-2xl rounded-lg"
+                  className="lg:w-full lg:h-[50%] lg:text-2xl md:text-[25px] rounded-lg"
                 />
               </Form.Group>
             </div>
@@ -524,7 +524,7 @@ export const Facturacion = () => {
 
           <button
             type="submit"
-            className="lg:w-[30%] lg:h-16 lg:text-[30px] lg:mx-[35%] lg:mt-4 bg-red-500 rounded-lg ml-[23%] text-white h-12 w-[60%]"
+            className="lg:w-[30%] lg:h-16 lg:text-[30px] lg:mx-[35%] lg:mt-4 md:w-[30%] md:h-16 md:text-[25px] md:ml-[35%] bg-red-500 rounded-lg ml-[23%] text-white h-12 w-[60%]"
             onClick={handleGeneratePDF}
           >
             Generar Factura

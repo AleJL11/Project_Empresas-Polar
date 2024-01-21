@@ -54,6 +54,7 @@ export const Home = () => {
           min-[1920px]:w-[40%] min-[1920px]:h-[250px]
         xl:w-[50%]
         lg:w-[60%] lg:h-[200px]
+        md:h-[200px] md:w-[60%]
         w-[50%] h-20 mx-auto bg-white rounded-t-lg drop-shadow-xl
         "
         >
@@ -69,32 +70,32 @@ export const Home = () => {
           className="
         xl:mt-7
         lg:mt-[-1%] lg:mb-20
-        md:mt-8
+        md:mt-8 md:mb-20
         w-full h-40"
         >
           <comp.Carousel />
         </div>
       </div>
 
-      <p className="xl:text-[40px] lg:text-[35px] text-lg text-[#F90A0A] ml-4 mt-4">
+      <p className="xl:text-[40px] lg:text-[35px] md:text-[35px] text-lg text-[#F90A0A] ml-4 mt-4">
         Productos:
       </p>
 
-      <div className="lg:flex lg:flex-row lg:justify-center lg:items-center">
+      <div className="lg:flex lg:flex-row lg:justify-center lg:items-center md:mt-10">
         {/* Cerveceria Polar */}
         <section
           className="
         min-[1920px]:h-60
         lg:w-[50%] lg:h-50
-        md:h-52 md:flex md:justify-center
+        md:h-60 md:flex md:justify-center
         w-[90%] h-40 mx-auto flex flex-row drop-shadow-xl"
         >
-          <div className="w-[50%] h-full text-base flex justify-center items-center text-center text-white bg-[#00057B]">
+          <div className="md:w-[60%] w-[50%] h-full text-base flex justify-center items-center text-center text-white bg-[#00057B]">
             <p
               className="
               xl:text-[30px]
               lg:text-[25px]
-              md:text-base
+              md:text-[25px]
               text-center px-4"
             >
               Una porlacita destapa lo mejor de nosotros
@@ -104,9 +105,9 @@ export const Home = () => {
           <div
             className="
             min-[1920px]:w-[20%]
-        lg:w-[47%]
-        md:w-[40%]
-        w-[50%] h-full"
+            lg:w-[47%]
+            md:w-[30%]
+            w-[50%] h-full"
           >
             <img
               src={ToboCervezas}
@@ -121,7 +122,7 @@ export const Home = () => {
           className="
           min-[1920px]:h-60
           lg:w-[50%] lg:h-52
-          md:h-52 md:flex md:justify-center md:mx-auto
+          md:h-60 md:flex md:justify-center md:mx-auto
           w-[90%] h-40 mx-auto flex flex-row my-7 drop-shadow-xl"
         >
           <div
@@ -138,7 +139,7 @@ export const Home = () => {
           </div>
 
           <div className="w-[50%] h-full text-base flex justify-center items-center text-center text-white bg-[#E81D1D]">
-            <p className="xl:text-[30px] lg:text-[25px] text-center px-4">
+            <p className="xl:text-[30px] lg:text-[25px] md:text-[25px] text-center px-4">
               Llena tu vida de sabor con P.A.N!
             </p>
           </div>
@@ -149,11 +150,11 @@ export const Home = () => {
         className="
         min-[1920px]:h-60
         lg:w-[50%]
-        md:h-52 md:flex md:justify-center md:mx-auto
+        md:h-60 md:flex md:justify-center md:mx-auto
         w-[90%] h-40 mx-auto flex flex-row drop-shadow-xl"
       >
-        <div className="w-[50%] h-full text-base flex justify-center items-center text-center text-white bg-[#00057B]">
-          <p className="xl:text-[30px] lg:text-[25px] text-center px-4">
+        <div className="md:w-[60%] w-[50%] h-full text-base flex justify-center items-center text-center text-white bg-[#00057B]">
+          <p className="xl:text-[30px] lg:text-[25px] md:text-[25px] text-center px-4">
             Nada sabe mejor que una pepsi...
           </p>
         </div>
@@ -171,21 +172,22 @@ export const Home = () => {
       <section
         className="
         xl:h-80
-      md:flex md:justify-center
+      md:flex md:justify-center md:h-72
       w-full h-64 bg-[#00057B] flex flex-row my-7"
       >
         <div className="xl:w-[70%] md:ml-[4px] w-[50%] h-full flex flex-col justify-center items-center">
           <div>
-            <p className="xl:text-[35px] lg:text-[30px] text-base text-white text-center">
+            <p className="xl:text-[35px] lg:text-[30px] md:text-[30px] text-base text-white text-center">
               50% de descuento en esta gran época del año
             </p>
           </div>
           <div>
-            <p className="xl:mt-4 xl:text-[25px] lg:text-[20px] text-xs text-white text-center px-2">
-              Empresas polar en este año te proporciona un descuento de 50% en todos nuestro productos
+            <p className="xl:mt-4 xl:text-[25px] lg:text-[20px] md:text-[20px] text-xs text-white text-center px-2">
+              Empresas polar en este año te proporciona un descuento de 50% en
+              todos nuestro productos
             </p>
           </div>
-          <div className="xl:text-[30px] lg:text-[25px] mt-2 cursor-pointer text-xs">
+          <div className="xl:text-[30px] lg:text-[25px] md:text-[25px] mt-2 cursor-pointer text-xs">
             <Link className="text-white no-underline" to="/catalogo">
               Ver aquí los productos
             </Link>
@@ -196,7 +198,7 @@ export const Home = () => {
           className="
           xl:mt-10
         lg:ml-[20%] lg:mt-4
-        md:my-[-2%] md:mt-4
+        md:mt-8
         w-[40%] h-full my-[15%] ml-7"
         >
           <img src={Banner} alt="Imagen Banner" className="rounded-md" />
@@ -208,17 +210,18 @@ export const Home = () => {
         className="
       xl:h-[500px]
       lg:flex lg:flex-row lg:items-center lg:justify-center lg:w-[95%] lg:h-[350px] lg:py-2
+      md:h-[900px]
       w-[90%] h-3/5 mx-auto flex flex-col drop-shadow-lg"
       >
         <div
           className="
           min-[1920px]:h-[90%]
-        xl:w-[50%] xl:h-[85%]
-        lg:flex lg:justify-center lg:flex-col lg:w-[40%] lg:h-[90%]
-        md:h-64
-        w-[95%] h-full bg-white mx-auto"
+          xl:w-[50%] xl:h-[100%]
+          lg:flex lg:justify-center lg:flex-col lg:w-[40%] lg:h-[90%]
+          md:h-[55%]
+          w-[95%] h-full bg-white mx-auto"
         >
-          <div className="xl:text-[25px] lg:text-[20px] w-full h-auto">
+          <div className="xl:text-[25px] lg:text-[25px] md:text-[25px] w-full h-auto">
             <p className="xl:ml-3">
               Categorías: <em>{alimentosPolar.titulo}</em>
             </p>
@@ -238,10 +241,10 @@ export const Home = () => {
             className="
             xl:mx-auto xl:h-16 xl:text-[25px]
           lg:ml-20 lg:w-[60%]
-          md:ml-52
+          md:ml-[30%] md:text-[30px] md:h-12
           w-[40%] h-8 ml-24 mb-4 bg-[#D9D9D9] tracking-wide"
           >
-            <Link to="/catalogo" className=" no-underline text-black">
+            <Link to="/catalogo" className="no-underline text-black">
               ALIMENTOS
             </Link>
           </button>
@@ -260,7 +263,9 @@ export const Home = () => {
                 key={alimento._id}
                 className="
                 min-[1920px]:w-[45%]
+                xl:h-[180px]
                 lg:w-[65%] lg:h-32 lg:mx-auto
+                md:h-40
                 w-full h-24 bg-white ml-20"
               >
                 <img
@@ -278,35 +283,36 @@ export const Home = () => {
         className="
       xl:h-64
       lg:flex lg:flex-row lg:items-center lg:w-[95%] lg:h-52
+      md:h-[420px]
       w-[90%] h-[90%] my-2 mx-auto drop-shadow-xl"
       >
-        <div className="xl:h-full xl:-mt-0 w-[95%] h-36 mx-auto gap-4 mt-6">
-          <div className="lg:mt-0 w-full h-auto mt-12 text-6xl text-center flex flex-col items-center">
-            <MdComputer />
-            <p className="xl:text-[25px] xl:mt-4 lg:text-[20px] text-base">
-              Compra desde la comodidad de tu hogar
-            </p>
-            <p className="min-[1920px]:text-[25px] xl:text-[20px] lg:text-[20px] text-xs mt-2">
-              Encuentra lo que necesitas. Es fácil y rápido! ¡Todos podemos
-              hacerlo!
-            </p>
+          <div className="xl:h-full xl:-mt-0 w-[95%] h-36 mx-auto gap-4 mt-6">
+            <div className="lg:mt-0 w-full h-auto mt-12 text-6xl text-center flex flex-col items-center">
+              <MdComputer />
+              <p className="xl:text-[25px] xl:mt-4 lg:text-[25px] md:text-[25px] text-base">
+                Compra desde la comodidad de tu hogar
+              </p>
+              <p className="min-[1920px]:text-[25px] xl:text-[20px] lg:text-[25px] md:text-[23px] text-xs mt-2">
+                Encuentra lo que necesitas. Es fácil y rápido! ¡Todos podemos
+                hacerlo!
+              </p>
+            </div>
           </div>
-        </div>
 
-        <div className="xl:h-[80%] lg:w-[1px] lg:h-[60%] lg:mt-[60%] w-[50%] h-[1px] mx-auto bg-[#A7A7A7] mt-4"></div>
+          <div className="xl:h-[80%] lg:w-[1px] lg:h-[60%] lg:mt-[60%] w-[50%] h-[1px] mx-auto bg-[#A7A7A7] mt-4"></div>
 
-        <div className="xl:h-full xl:-mt-0 w-[95%] h-36 mx-auto gap-4 mt-6">
-          <div className="lg:mt-0 w-full h-auto mt-12 text-6xl text-center flex flex-col items-center">
-            <LiaBoxSolid />
-            <p className="xl:text-[25px] xl:mt-4 lg:text-[20px] text-base">
-              Recibe tu producto
-            </p>
-            <p className="min-[1920px]:text-[25px] xl:text-[20px] lg:text-[20px] text-xs mt-2">
-              Puedes recibirlo en tu casa o retirarlo. ¡Tu decides que
-              prefieres!
-            </p>
+          <div className="xl:h-full xl:-mt-0 w-[95%] h-36 mx-auto gap-4 mt-6">
+            <div className="lg:mt-0 w-full h-auto mt-12 text-6xl text-center flex flex-col items-center">
+              <LiaBoxSolid />
+              <p className="xl:text-[25px] xl:mt-4 lg:text-[25px] md:text-[25px] text-base">
+                Recibe tu producto
+              </p>
+              <p className="min-[1920px]:text-[25px] xl:text-[20px] lg:text-[25px] md:text-[23px] text-xs mt-2">
+                Puedes recibirlo en tu casa o retirarlo. ¡Tu decides que
+                prefieres!
+              </p>
+            </div>
           </div>
-        </div>
       </section>
 
       <comp.Footer />

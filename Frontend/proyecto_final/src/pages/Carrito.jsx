@@ -136,14 +136,14 @@ export const Carrito = () => {
         </div>
       </div>
 
-      <div className="lg:h-52 grid grid-rows mb-2 w-[96%] h-32 mx-auto mt-4 bg-white drop-shadow-xl rounded-2xl px-3 py-2">
-        <div className="lg:mt-16 lg:h-20 md:w-[60%] text-sm">
-          <p className="lg:text-[25px] text-black text-base">
+      <div className="lg:h-52 md:h-[200px] grid grid-rows mb-2 w-[96%] h-32 mx-auto mt-4 rounded-2xl px-3 py-2 drop-shadow-xl">
+        <div className="lg:mt-16 lg:h-20 md:w-[60%] md:mt-10 text-sm">
+          <p className="lg:text-[35px] md:text-[30px] text-black text-base">
             Cesta de compra (
             {cart.reduce((total, product) => total + product.cantidad, 0)})
           </p>
           <button
-            className="lg:text-[25px] lg:mt-6 flex flex-row cursor-pointer"
+            className="lg:text-[25px] lg:mt-6 md:text-[25px] md:mt-6 flex flex-row cursor-pointer"
             onClick={handleSelectAll}
           >
             {selectAll ? (
@@ -154,9 +154,9 @@ export const Carrito = () => {
             Seleccionar todos los productos
           </button>
         </div>
-        <span className="min-[1920px]:mt-[-7%] lg:h-[8em] lg:mt-[-10%] bg-slate-400 h-[5em] w-[1px] mt-[-3em] ml-[62%]"></span>
+        <span className="min-[2230px]:mt-[-6%] min-[1920px]:mt-[-7%] xl:h-[9em] xl:mt-[-9%] lg:h-[8em] lg:mt-[-10%] md:h-[9em] md:mt-[-13%] bg-slate-400 h-[5em] w-[1px] mt-[-3em] ml-[62%]"></span>
         <button
-          className="min-[1920px]:mt-[-6%] xl:mt-[-9.5%] lg:w-[25%] lg:text-[25px] lg:mt-[-13%] md:w-[20%] md:ml-[70%] w-32 h-8 flex flex-row-reverse space-x-4 space-x-reverse text-[13px] ml-[200px] mt-[-70px] text-[#1355FF] active:text-green-600"
+          className="min-[2230px]:mt-[-5%] min-[1920px]:mt-[-6%] xl:mt-[-7%] lg:w-[25%] lg:text-[25px] lg:mt-[-13%] md:w-[20%] md:ml-[70%] md:text-[25px] md:mt-[-15%] w-32 h-8 flex flex-row-reverse space-x-4 space-x-reverse text-[13px] ml-[200px] mt-[-70px] text-[#1355FF] active:text-green-600"
           onClick={handleDeleteAllSelected}
         >
           Borra todos los productos
@@ -167,10 +167,10 @@ export const Carrito = () => {
         <>
           <div
             key={product._id}
-            className="lg:h-[300px] grid grid-rows mb-2 w-[96%] h-40 mx-auto mt-4 bg-white drop-shadow-xl rounded-2xl px-3"
+            className="lg:h-[350px] md:h-[300px] grid grid-rows mb-2 w-[96%] h-40 mx-auto mt-4 bg-white drop-shadow-xl rounded-2xl px-3"
           >
             <div className="text-sm">
-              <p className="lg:text-[25px] lg:mt-12 flex flex-row text-black text-xs">
+              <p className="lg:text-[35px] lg:mt-12 md:text-[30px] md:mt-6 flex flex-row text-black text-xs">
                 {product.selected ? (
                   <GrStatusGood className="mr-2 text-green-500 mt-[1px]" />
                 ) : (
@@ -178,32 +178,32 @@ export const Carrito = () => {
                 )}
                 {product.nombre} ({product.cantidad})
               </p>
-              <p className="min-[1920px]:ml-[-72%] lg:text-[25px] lg:ml-[-50%] md:ml-[-60%] grid justify-items-center mt-[-5px] text-slate-600 text-sm">
-                Harina de Maíz Blanco refinada, precocida...
+              <p className="lg:text-[35px] lg:mt-12 md:text-[30px] mt-[-5px] text-slate-600 text-sm">
+              {product.descripcion.length > 41 ? `${product.descripcion.substring(0, 41)}...` : product.descripcion}
               </p>
 
-              <div className="lg:mt-16 mt-6 flex flex-row">
+              <div className="lg:mt-16 md:mt-16 mt-6 flex flex-row">
                 <img
                   src={`http://localhost:3001/Productos/${product.imagen}`}
                   alt="alimentos polar"
-                  className="lg:w-28 lg:h-28 w-16 h-16"
+                  className="lg:w-28 lg:h-28 md:w-28 md:h-28 w-16 h-16"
                 />
                 <div className="flex flex-col">
-                  <p className="lg:text-[25px] text-black">
+                  <p className="lg:text-[25px] md:text-[23px] text-black">
                     USD {product.precio}
                     <br />
-                    <span className="lg:text-[20px] text-slate-600 text-xs">
+                    <span className="lg:text-[20px] md:text-[23px] text-slate-600 text-xs">
                       Envío: BsS 40
                     </span>
                   </p>
                 </div>
               </div>
-              <div className="min-[2230px]:mt-[-7%] min-[1920px]:mt-[-9%] xl:mt-[-12%] lg:mt-[-15%] md:mt-[-8%] h-4 w-4 ml-[80%] mt-[-18%]">
+              <div className="min-[2230px]:mt-[-7%] min-[1920px]:mt-[-9%] xl:mt-[-12%] lg:mt-[-15%] md:mt-[-15%] h-4 w-4 ml-[80%] mt-[-18%]">
                 <MdDeleteOutline
-                  className="lg:text-[40px] ml-12 text-2xl"
+                  className="lg:text-[40px] md:text-[50px] md:mb-4 ml-12 text-2xl"
                   onClick={() => handleDelete(product._id)}
                 />
-                <div className="lg:text-[30px] lg:mt-4 flex flex-row gap-4">
+                <div className="lg:text-[30px] md:text-[32px] lg:mt-4 flex flex-row gap-4">
                   <button onClick={() => handleDecrement(product._id)}>
                     -
                   </button>
@@ -219,8 +219,8 @@ export const Carrito = () => {
       ))}
 
       <div className="grid grid-rows mb-2 w-[96%] h-60 mx-auto mt-4 bg-white drop-shadow-xl rounded-2xl px-3 py-2">
-        <div className="lg:text-[25px] text-sm mt-4">
-          <p className="lg:text-[30px] lg:mb-12 text-black text-base flex flex-row">Resumen:</p>
+        <div className="lg:text-[30px] md:text-[30px] text-sm mt-4">
+          <p className="lg:text-[35px] lg:mb-12 md:text-[30px] md:mb-10 text-black text-base flex flex-row">Resumen:</p>
           <p>
             Total parcial:
             <span className="ml-10">
@@ -242,7 +242,7 @@ export const Carrito = () => {
           </p>
           <p>
             Total de pago:
-            <span className="lg:text-[25px] ml-9 text-black text-base">
+            <span className="lg:text-[30px] md:text-[30px] ml-9 text-black text-base">
               US $
               {cart.reduce(
                 (total, product) => total + product.cantidad * product.precio,
@@ -260,7 +260,7 @@ export const Carrito = () => {
           <Link
             to={`/facturacion/${cart.map((product) => product._id).join("-")}`}
           >
-            <button className="min-[1920px]:mt-[-7%] lg:w-40 lg:h-20 lg:text-[25px] lg:mt-[-12%] lg:mr-[15%] md:float-right md:mr-[20%] md:mt-[-10%] md:w-32 md:h-14 md:text-[20px] ml-[35%] bg-red-500 w-24 h-10 rounded-2xl text-white">
+            <button className="min-[2240px]:mt-[-5%] min-[1920px]:mt-[-7%] xl:mt-[-10%] lg:w-40 lg:h-20 lg:text-[25px] lg:mt-[-12%] lg:mr-[15%] md:float-right md:mr-[15%] md:mt-[-13%] md:w-32 md:h-14 md:text-[25px] ml-[35%] bg-red-500 w-24 h-10 rounded-2xl text-white">
               PAGAR (
               {cart.reduce((total, product) => total + product.cantidad, 0)})
             </button>

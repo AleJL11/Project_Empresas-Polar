@@ -19,6 +19,7 @@ import Form from "react-bootstrap/Form";
 
 export const Login = () => {
   const history = useNavigate();
+  const [mensaje, setMensaje] = useState("");
   const [correo, setCorreo] = useState(Cookies.get("correo") || "");
   const [contrasena, setContrasena] = useState("");
   const [correoError, setCorreoError] = useState("");
@@ -125,49 +126,63 @@ export const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     setCorreoError("");
     setContrasenaError("");
-
-    if (correo === "") {
-      setCorreoError("El campo de correo es obligatorio");
-    }
-
-    if (contrasena === "") {
-      setContrasenaError("El campo de contraseña es obligatorio");
-    }
-
-    if (correo && contrasena && !correoError && !contrasenaError) {
-      try {
-        // Realiza la solicitud a la API para verificar las credenciales
-        await axios
-          .post("http://localhost:3001/usuarios/login", {
-            correo: correo,
-            clave: contrasena,
-          })
-          .then((res) => {
-            if (res.data.message === "Ingreso exitoso") {
-              setID(res.data.user._id);
-              setRole(res.data.user.rol);
-              setImg(res.data.user.imagen);
-              setUser(res.data.user.nombre);
-              setLastName(res.data.user.apellido);
-              setCedula(res.data.user.cedula);
-              setUserEmail(res.data.user.correo);
-              setTlf(res.data.user.nro_tlf);
-              setDireccion(res.data.user.direccion);
-              setClave(res.data.user.clave);
-              history("/");
-            } else {
-              if (res.data.message === "Usuario no encontrado") {
-                setCorreoError("Correo incorrecto");
-              } else if (res.data.message === "Contraseña incorrecta") {
-                setContrasenaError("Contraseña incorrecta");
-              }
-            }
-          });
-      } catch (error) {
-        console.error(error);
+    setMensaje("");
+  
+    try {
+      if (!correo) {
+        setCorreoError("El campo de correo es obligatorio");
+        return;
+      }
+  
+      if (!contrasena) {
+        setContrasenaError("El campo de contraseña es obligatorio");
+        return;
+      }
+  
+      // Realiza la solicitud a la API para verificar las credenciales
+      const response = await axios.post("http://localhost:3001/usuarios/login", {
+        correo: correo,
+        clave: contrasena,
+      });
+  
+      if (response.data.message === "Ingreso exitoso") {
+        // Inicio de sesión exitoso
+        setID(response.data.user._id);
+        setRole(response.data.user.rol);
+        setImg(response.data.user.imagen);
+        setUser(response.data.user.nombre);
+        setLastName(response.data.user.apellido);
+        setCedula(response.data.user.cedula);
+        setUserEmail(response.data.user.correo);
+        setTlf(response.data.user.nro_tlf);
+        setDireccion(response.data.user.direccion);
+        setClave(response.data.user.clave);
+        history("/");
+        setMensaje("Sesión iniciada correctamente");
+      } else {
+        if (response.data.message.includes("Usuario no encontrado")) {
+          setCorreoError("Correo incorrecto");
+        } else if (response.data.message.includes("Contraseña incorrecta")) {
+          setContrasenaError(response.data.message);
+        } else {
+          console.error("Error desconocido en la respuesta de la API:", response.data.message);
+          setCorreoError("Error al iniciar sesión, intente nuevamente");
+          setContrasenaError("Error al iniciar sesión, intente nuevamente");
+        }
+      }
+    } catch (error) {
+      console.error("Error al iniciar sesión:", error);
+  
+      if (error.response) {
+        // Error de respuesta con detalles
+        console.error("Detalles completos del error:", error.response);
+        setContrasenaError(error.response.data.message); // Muestra el mensaje específico de error
+      } else {
+        // Otro tipo de error no manejado específicamente
+        console.error("Error desconocido:", error.message);
         setCorreoError("Error al iniciar sesión, intente nuevamente");
         setContrasenaError("Error al iniciar sesión, intente nuevamente");
       }
@@ -262,6 +277,7 @@ export const Login = () => {
             }}
           />
           {correoError && <p className="xl:text-[30px] md:text-[25px] md:ml-[-50px] text-red-500">{correoError}</p>}
+          {mensaje && <p className="xl:text-[30px] md:text-[25px] md:ml-[-50px] text-red-500">{mensaje}</p>}
         </Form.Group>
         <Form.Group
           className="xl:w-[30%]
@@ -281,18 +297,19 @@ export const Login = () => {
             }}
           />
           <button
-            className="min-[2530px]:-ml-20 min-[2530px]:mt-24 min-[2240px]:mt-[-62px] min-[1920px]:-mt-16 min-[1860px]:-ml-20 min-[1860px]:mt-20 min-[1920px]:ml-[650px] xl:-mt-16 xl:ml-[500px] lg:-mt-14 lg:ml-[450px] lg:text-[40px] md:ml-[350px] md:text-[40px] md:-mt-14 absolute -mt-8 ml-[250px] text-xl"
+            className="min-[2530px]:-ml-20 min-[2530px]:mt-24 min-[2240px]:mt-[-62px] min-[1920px]:-mt-16 min-[1860px]:-ml-20 min-[1860px]:mt-20 min-[1920px]:ml-[650px] xl:-mt-16 xl:ml-[500px] min-[1125px]:ml-[-80px] min-[1125px]:mt-16 lg:-mt-14 lg:ml-[400px] lg:text-[40px] md:ml-[350px] md:text-[40px] md:-mt-14 absolute -mt-8 ml-[250px] text-xl"
             onClick={togglePasswordVisibility}
           >
             {passwordIcon}
           </button>
-          {contrasenaError && <p className="xl:text-[30px] md:text-[25px] md:ml-[-50px]  text-red-500">{contrasenaError}</p>}
+          {contrasenaError && <p className="xl:text-[30px] md:text-[25px] md:ml-[-50px] text-red-500">{contrasenaError}</p>}
         </Form.Group>
         {correoEnviado && (
           <p className="text-green-500 text-center mx-auto mt-2 w-[80%]">
             Se envió un correo para la recuperación de la contraseña
           </p>
         )}
+        {mensaje && <p className="xl:text-[30px] md:text-[25px] md:ml-[-50px] text-red-500">{mensaje}</p>}
         <div className="lg:mt-[5%] w-[95%] h-auto mx-auto">
           <div className="grid grid-cols-1 place-items-center">
             <Button type="submit" variant="danger" className="xl:w-[400px] lg:w-[300px] md:w-[300px] mb-[1rem] w-48">
@@ -327,7 +344,7 @@ export const Login = () => {
           onClick={handleGoBack}
         />
         <Link to="/">
-          <FiHome className="lg:text-[60px] md:text-[60px] text-black text-2xl mr-5" />
+          <FiHome className="xl:mr-14 lg:text-[60px] md:text-[60px] text-black text-2xl mr-5" />
         </Link>
       </div>
     </>

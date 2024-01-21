@@ -56,86 +56,84 @@ export const ReporteCliente = () => {
           className="
         w-full h-14 grid grid-cols-3 place-items-center"
         >
-          <div
-            className="min-[1920px]:text-[30px] xl:text-2xl lg:flex lg:flex-row lg:text-[25px] lg:gap-10
-          mr-4"
-          >
+          <div className="min-[1920px]:text-[30px] xl:text-2xl lg:flex lg:flex-row lg:text-[25px] lg:gap-10 mr-4">
             <FaArrowLeft
-              className="lg:block min-[320px]:hidden lg:text-white"
+              className="lg:block md:text-[40px] min-[320px]:hidden lg:text-white"
               onClick={handleGoBack}
             />
 
             <Link to="/perfil-usuario">
-              <FaUser className="lg:block min-[320px]:hidden lg:text-white" />
+              <FaUser className="lg:block lg:text-[35px] md:text-[40px] min-[320px]:hidden lg:text-white" />
             </Link>
 
             <CiMenuBurger
-              className="lg:hidden text-2xl text-white"
+              className="lg:hidden md:text-[40px] text-2xl text-white"
               onClick={toggleMenu}
             />
           </div>
           <div
             className="xl:ml-[50%]
-           lg:ml-[50em]
-          w-[33.33%] h-full ml-7"
+           lg:ml-[10em]
+            w-[33.33%] h-full ml-7"
           >
             <div
-              className="min-[1920px]:ml-[40em] xl:ml-[30em] lg:flex lg:w-[85%]
-            grid place-items-center mt-2"
+              className="lg:flex lg:flex-row lg:gap-8
+              grid place-items-center mt-2"
             >
               {userRole ? (
-                <img
-                  src={`http://localhost:3001/Usuarios/${imgUser}`}
-                  alt="Imagen de perfil"
-                  className="
+                <>
+                  <img
+                    src={`http://localhost:3001/Usuarios/${imgUser}`}
+                    alt="Imagen de perfil"
+                    className="xl:w-16 xl:h-16 md:w-16 md:h-16
                   w-16 h-16 rounded-full object-fill"
-                  title={userName}
-                />
+                    title={userName}
+                  />
+                  <div className="xl:text-[50px] lg:text-[35px]">
+                    <IoIosLogOut
+                      className="lg:block lg:text-white min-[320px]:hidden"
+                      onClick={handleLogout}
+                    />
+                  </div>
+                </>
               ) : (
                 <img
                   src={PerfilImg}
                   alt="Imagen de perfil por defecto"
-                  className="w-16 h-16 rounded-full object-fill"
+                  className="xl:w-16 xl:h-16 md:w-16 md:h-16 w-16 h-16 rounded-full object-fill"
                   title="Perfil por defecto"
                 />
               )}
-              <div className="lg:flex lg:justify-center lg:w-[100%] lg:ml-4 lg:gap-8">
-                <IoIosLogOut
-                  className="min-[1920px]:text-[40px] xl:text-3xl min-[320px]:hidden 
-              lg:block lg:text-2xl lg:text-white lg:mt-[-1px]"
-                  onClick={handleLogout}
-                />
-              </div>
             </div>
           </div>
         </div>
         {isMenuOpen && (
-          <div className="ml-5 bg-[#D9D9D9] w-24 h-auto absolute rounded-md z-10">
-            <div className="p-2 text-center">
+          <div className="lg:hidden md:w-[200px] md:mt-4 md:ml-10 ml-5 bg-[#00057B] w-40 h-auto absolute rounded-md z-10">
+            <div className="md:text-[30px] p-2 text-center">
               {userRole === "administrador" && (
                 <>
                   <li className="list-none mb-3">
-                    <Link className="text-black no-underline" to="/usuarios">
+                    <Link className="text-white no-underline" to="/usuarios">
                       Usuarios
                     </Link>{" "}
                   </li>
                   <li className="list-none mb-3">
-                    <Link className="text-black no-underline" to="/clientes">
+                    <Link className="text-white no-underline" to="/clientes">
                       Clientes
                     </Link>{" "}
                   </li>
                   <li className="list-none mb-3">
-                    <Link className="text-black no-underline" to="/vendedores">
+                    <Link className="text-white no-underline" to="/vendedores">
                       Vendedores
                     </Link>{" "}
                   </li>
                   <li className="list-none mb-3">
-                    <Link className="text-black no-underline" to="/productos">
+                    <Link className="text-white no-underline" to="/productos">
                       Productos
                     </Link>{" "}
                   </li>
                   <li className="list-none">
-                    <Link className="text-black no-underline" to="/ventas">
+                    <Link className="text-white no-underline" to="/ventas">
                       Ventas
                     </Link>{" "}
                   </li>
@@ -144,22 +142,22 @@ export const ReporteCliente = () => {
               {userRole === "vendedor" && (
                 <>
                   <li className="list-none mb-3">
-                    <Link className="text-black no-underline" to="/clientes">
+                    <Link className="text-white no-underline" to="/clientes">
                       Clientes
                     </Link>{" "}
                   </li>
                   <li className="list-none mb-3">
-                    <Link className="text-black no-underline" to="/vendedores">
+                    <Link className="text-white no-underline" to="/vendedores">
                       Vendedores
                     </Link>{" "}
                   </li>
                   <li className="list-none mb-3">
-                    <Link className="text-black no-underline" to="/productos">
+                    <Link className="text-white no-underline" to="/productos">
                       Productos
                     </Link>{" "}
                   </li>
                   <li className="list-none">
-                    <Link className="text-black no-underline" to="/ventas">
+                    <Link className="text-white no-underline" to="/ventas">
                       Ventas
                     </Link>{" "}
                   </li>
@@ -238,7 +236,7 @@ export const ReporteCliente = () => {
         </div>
 
         {isMenuOpenCRUD && (
-          <div className="xl:w-40 xl:text-[30px] lg:ml-[48%] lg:w-32 lg:text-[25px] ml-5 bg-[#D9D9D9] w-24 h-auto absolute rounded-md z-10">
+          <div className="min-[1920px]:ml-[47%] xl:ml-[45%] lg:block lg:text-[25px] lg:w-[200px] lg:ml-[42%] ml-5 bg-[#00057B] w-24 h-auto absolute rounded-md z-10 hidden">
             <div className="p-2 text-center">
               {userRole === "administrador" && (
                 <>
@@ -308,7 +306,7 @@ export const ReporteCliente = () => {
 
       {/* TIPO DE REPORTE */}
       <div className="min-[1920px]:h-[250px] xl:w-[80%] xl:h-[200px] xl:text-xl lg:h-44 grid grid-rows grid-flow-col-1 h-36 w-[90%] mx-auto mt-4 drop-shadow-2xl bg-white overflow-x-auto overflow-y-auto">
-        <h5 className="xl:text-[30px] lg:text-[25px] ml-4 mt-4">
+        <h5 className="xl:text-[30px] lg:text-[25px] md:text-[25px] ml-4 mt-4">
           Seleccionar tipo de reporte:
         </h5>
         <div
@@ -317,7 +315,7 @@ export const ReporteCliente = () => {
         flex flex-row mx-auto text-center gap-1 drop-shadow-2xl h-20 w-[90%] mt-[5%] p-2 space-x-4"
         >
           <button
-            className={`xl:text-[25px] lg:text-[25px] bg-red-500 hover:bg-red-400 h-10 w-auto px-4 -mt-7 text-center text-white rounded-2xl ${
+            className={`xl:text-[25px] lg:text-[25px] md:text-[25px] md:h-12 bg-red-500 hover:bg-red-400 h-10 w-auto px-4 -mt-7 text-center text-white rounded-2xl ${
               tipoReporte === "clientes" ? "bg-gray-500" : ""
             }`}
             onClick={() => manejarClickTipoReporte("clientes")}
@@ -325,7 +323,7 @@ export const ReporteCliente = () => {
             Clientes
           </button>
           <button
-            className={`xl:text-[25px] lg:text-[25px] bg-red-500 hover:bg-red-400 h-10 w-auto px-4 -mt-7 text-center text-white rounded-2xl ${
+            className={`xl:text-[25px] lg:text-[25px] md:text-[25px] md:h-12 bg-red-500 hover:bg-red-400 h-10 w-auto px-4 -mt-7 text-center text-white rounded-2xl ${
               tipoReporte === "ventas" ? "bg-gray-500" : ""
             }`}
             onClick={() => manejarClickTipoReporte("ventas")}
@@ -333,7 +331,7 @@ export const ReporteCliente = () => {
             Ventas
           </button>
           <button
-            className={`xl:text-[25px] lg:text-[25px] bg-red-500 hover:bg-red-400 h-10 w-auto px-4 -mt-7 text-center text-white rounded-2xl ${
+            className={`xl:text-[25px] lg:text-[25px] md:text-[25px] md:h-12 bg-red-500 hover:bg-red-400 h-10 w-auto px-4 -mt-7 text-center text-white rounded-2xl ${
               tipoReporte === "productos" ? "bg-gray-500" : ""
             }`}
             onClick={() => manejarClickTipoReporte("productos")}
@@ -341,7 +339,7 @@ export const ReporteCliente = () => {
             Productos
           </button>
           <button
-            className={`xl:text-[25px] lg:text-[25px] bg-red-500 hover:bg-red-400 h-10 w-auto px-4 -mt-7 text-center text-white rounded-2xl ${
+            className={`xl:text-[25px] lg:text-[25px] md:text-[25px] md:h-12 bg-red-500 hover:bg-red-400 h-10 w-auto px-4 -mt-7 text-center text-white rounded-2xl ${
               tipoReporte === "categorias" ? "bg-gray-500" : ""
             }`}
             onClick={() => manejarClickTipoReporte("categorias")}
@@ -349,7 +347,7 @@ export const ReporteCliente = () => {
             Categorías
           </button>
           <button
-            className={`xl:text-[25px] lg:text-[25px] bg-red-500 hover:bg-red-400 h-10 w-auto px-4 -mt-7 text-center text-white rounded-2xl ${
+            className={`xl:text-[25px] lg:text-[25px] md:text-[25px] md:h-12 bg-red-500 hover:bg-red-400 h-10 w-auto px-4 -mt-7 text-center text-white rounded-2xl ${
               tipoReporte === "vendedores" ? "bg-gray-500" : ""
             }`}
             onClick={() => manejarClickTipoReporte("vendedores")}

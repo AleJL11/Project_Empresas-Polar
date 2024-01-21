@@ -9,17 +9,19 @@ export const Footer = () => {
       <div className="lg:flex lg:flex-row lg:h-[11em] w-full h-64 bg-[#D9D9D9] flex flex-col">
         <div className="
         lg:text-[20px] lg:w-[50%] lg:mx-auto lg:flex lg:items-center lg:mt-24
-        md:text-base
+        md:text-[25px]
         w-[85%] h-36 mx-auto mt-4 text-sm">
           <p>
             © Empresas Polar 2015. Todos los derechos reservados.
             <br />
+            <br />
             Rif: J-00006372-9
+            <br />
             <br />
             Términos y Condiciones | Política de Datos | Aspectos Legales
           </p>
         </div>
-        <div className="lg:hidden w-[50%] h-[1px] mx-auto bg-[#A7A7A7]"></div>
+        <div className="lg:hidden md:w-[70%] w-[50%] h-[1px] mx-auto bg-[#A7A7A7]"></div>
         <div className="lg:w-[40%] lg:flex lg:items-center
        md:w-[50%] md:flex md:items-center
        w-[85%] h-36 mx-auto mt-4 flex flex-row">

@@ -15,8 +15,16 @@ export const AuthProvider = ({ children }) => {
   const [userPassword, setPassword] = useState(null);
   const [userId, setId] = useState(null);
 
+  // Busqueda
+  const [searchProduct, setSearchProduct] = useState(null);
+
   // Carrito
   const [cart, setCart] = useState([]);
+
+  // Busqueda
+  const setSearch = (search) => {
+    setSearchProduct(search);
+  }
 
   const setRole = (role) => {
     setUserRole(role);
@@ -81,6 +89,7 @@ export const AuthProvider = ({ children }) => {
         userDirection,
         userPassword,
         userId,
+        searchProduct,
         setRole,
         setImg,
         setUser,
@@ -93,6 +102,7 @@ export const AuthProvider = ({ children }) => {
         setDireccion,
         setClave,
         setID,
+        setSearch,
       }}
     >
       {children}

@@ -253,42 +253,37 @@ export const DashSales = () => {
           className="
         w-full h-14 grid grid-cols-3 place-items-center"
         >
-          <div
-            className="min-[1920px]:text-[30px] xl:text-2xl lg:flex lg:flex-row lg:text-[25px] lg:gap-10
-          mr-4"
-          >
+          <div className="min-[1920px]:text-[30px] xl:text-2xl lg:flex lg:flex-row lg:text-[25px] lg:gap-10 mr-4">
             <FaArrowLeft
-              className="lg:block min-[320px]:hidden lg:text-white"
+              className="lg:block md:text-[40px] min-[320px]:hidden lg:text-white"
               onClick={handleGoBack}
             />
 
             <Link to="/perfil-usuario">
-              <FaUser className="lg:block min-[320px]:hidden lg:text-white" />
+              <FaUser className="lg:block lg:text-[35px] md:text-[40px] min-[320px]:hidden lg:text-white" />
             </Link>
 
             <CiMenuBurger
-              className="lg:hidden text-2xl text-white"
+              className="lg:hidden md:text-[40px] text-2xl text-white"
               onClick={toggleMenu}
             />
           </div>
-          <div
-            className=" xl:w-96 
-          w-52 h-full flex items-center justify-center"
-          >
-            <div className=" xl:w-96 rounded-lg bg-gray-200 ">
-              <div className="flex">
-                <div className="flex w-10 items-center justify-center rounded-l-lg border-r border-gray-200 bg-white">
-                  <button onClick={handleSearch}>
-                    <IoSearch />
-                  </button>
+          <div className="flex items-center justify-center">
+            <div className="rounded-lg bg-gray-200">
+              <div className="lg:flex lg:justify-center lg:items-center lg:w-96 flex">
+                <div
+                  className="xl:h-[35px] flex w-10 items-center justify-center rounded-l-lg border-r border-gray-200 bg-white"
+                  onClick={handleSearch}
+                >
+                  <IoSearch className="md:text-[20px]" />
                 </div>
                 <input
                   type="text"
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="xl:max-w-96 xl:h-8
-                  lg:h-10 lg:text-[25px]
-                   w-full max-w-[180px] bg-white pl-2 text-base font-semibold outline-0 rounded-r-lg"
+                  className="xl:h-[35px] lg:w-[100%] lg:h-8
+                  md:w-full md:text-[25px] md:h-10
+                  w-full bg-white pl-2 text-base font-semibold outline-0 rounded-r-lg"
                   onKeyPress={(e) => {
                     if (e.key === "Enter") {
                       handleSearch();
@@ -301,65 +296,66 @@ export const DashSales = () => {
           <div
             className="xl:ml-[50%]
            lg:ml-[10em]
-          w-[33.33%] h-full ml-7"
+            w-[33.33%] h-full ml-7"
           >
             <div
-              className="lg:flex lg:w-[85%]
-            grid place-items-center mt-2"
+              className="lg:flex lg:flex-row lg:gap-8
+              grid place-items-center mt-2"
             >
               {userRole ? (
-                <img
-                  src={`http://localhost:3001/Usuarios/${imgUser}`}
-                  alt="Imagen de perfil"
-                  className="
+                <>
+                  <img
+                    src={`http://localhost:3001/Usuarios/${imgUser}`}
+                    alt="Imagen de perfil"
+                    className="xl:w-16 xl:h-16 md:w-16 md:h-16
                   w-16 h-16 rounded-full object-fill"
-                  title={userName}
-                />
+                    title={userName}
+                  />
+                  <div className="xl:text-[50px] lg:text-[35px]">
+                    <IoIosLogOut
+                      className="lg:block lg:text-white min-[320px]:hidden"
+                      onClick={handleLogout}
+                    />
+                  </div>
+                </>
               ) : (
                 <img
                   src={PerfilImg}
                   alt="Imagen de perfil por defecto"
-                  className="w-16 h-16 rounded-full object-fill"
+                  className="xl:w-16 xl:h-16 md:w-16 md:h-16 w-16 h-16 rounded-full object-fill"
                   title="Perfil por defecto"
                 />
               )}
-              <div className="lg:flex lg:justify-center lg:w-[100%] lg:ml-4 lg:gap-8">
-                <IoIosLogOut
-                  className="min-[1920px]:text-[40px] xl:text-3xl min-[320px]:hidden 
-              lg:block lg:text-2xl lg:text-white lg:mt-[-1px]"
-                  onClick={handleLogout}
-                />
-              </div>
             </div>
           </div>
         </div>
         {isMenuOpen && (
-          <div className="ml-5 bg-[#D9D9D9] w-24 h-auto absolute rounded-md z-10">
-            <div className="p-2 text-center">
+          <div className="lg:hidden md:w-[200px] md:mt-4 md:ml-10 ml-5 bg-[#00057B] w-40 h-auto absolute rounded-md z-10">
+            <div className="md:text-[30px] p-2 text-center">
               {userRole === "administrador" && (
                 <>
                   <li className="list-none mb-3">
-                    <Link className="text-black no-underline" to="/usuarios">
+                    <Link className="text-white no-underline" to="/usuarios">
                       Usuarios
                     </Link>{" "}
                   </li>
                   <li className="list-none mb-3">
-                    <Link className="text-black no-underline" to="/clientes">
+                    <Link className="text-white no-underline" to="/clientes">
                       Clientes
                     </Link>{" "}
                   </li>
                   <li className="list-none mb-3">
-                    <Link className="text-black no-underline" to="/vendedores">
+                    <Link className="text-white no-underline" to="/vendedores">
                       Vendedores
                     </Link>{" "}
                   </li>
                   <li className="list-none mb-3">
-                    <Link className="text-black no-underline" to="/productos">
+                    <Link className="text-white no-underline" to="/productos">
                       Productos
                     </Link>{" "}
                   </li>
                   <li className="list-none">
-                    <Link className="text-black no-underline" to="/ventas">
+                    <Link className="text-white no-underline" to="/ventas">
                       Ventas
                     </Link>{" "}
                   </li>
@@ -368,22 +364,22 @@ export const DashSales = () => {
               {userRole === "vendedor" && (
                 <>
                   <li className="list-none mb-3">
-                    <Link className="text-black no-underline" to="/clientes">
+                    <Link className="text-white no-underline" to="/clientes">
                       Clientes
                     </Link>{" "}
                   </li>
                   <li className="list-none mb-3">
-                    <Link className="text-black no-underline" to="/vendedores">
+                    <Link className="text-white no-underline" to="/vendedores">
                       Vendedores
                     </Link>{" "}
                   </li>
                   <li className="list-none mb-3">
-                    <Link className="text-black no-underline" to="/productos">
+                    <Link className="text-white no-underline" to="/productos">
                       Productos
                     </Link>{" "}
                   </li>
                   <li className="list-none">
-                    <Link className="text-black no-underline" to="/ventas">
+                    <Link className="text-white no-underline" to="/ventas">
                       Ventas
                     </Link>{" "}
                   </li>
@@ -462,7 +458,7 @@ export const DashSales = () => {
         </div>
 
         {isMenuOpenCRUD && (
-          <div className="xl:w-40 xl:text-[30px] lg:ml-[48%] lg:w-32 lg:text-[25px] ml-5 bg-[#D9D9D9] w-24 h-auto absolute rounded-md z-10">
+          <div className="min-[1920px]:ml-[47%] xl:ml-[45%] lg:block lg:text-[25px] lg:w-[200px] lg:ml-[42%] ml-5 bg-[#00057B] w-24 h-auto absolute rounded-md z-10 hidden">
             <div className="p-2 text-center">
               {userRole === "administrador" && (
                 <>
@@ -529,13 +525,13 @@ export const DashSales = () => {
         )}
       </div>
 
-      <div className="w-full h-auto mx-auto text-center mt-4 mb-4">
+      <div className="xl:text-[35px] md:text-[30px] w-full h-auto mx-auto text-center mt-4 mb-4">
         <h1>Manejo de Ventas</h1>
       </div>
 
       <div className="w-full h-auto mx-auto text-center">
         <button
-          className="lg:w-40 lg:h-16 lg:text-[25px] rounded-xl bg-blue-500 text-white"
+          className="lg:w-40 lg:h-16 lg:text-[25px] md:w-[200px] md:text-[25px] md:h-20 rounded-xl bg-blue-500 text-white"
           onClick={() => openCreate()}
         >
           Crear Venta
@@ -543,13 +539,13 @@ export const DashSales = () => {
       </div>
 
       {/* TABLA */}
-      <div className="xl:h-[770px] lg:h-[600px] overflow-x-auto overflow-y-auto mt-4 w-[95%] mx-auto h-60">
+      <div className="xl:h-[770px] lg:h-[600px] md:mb-14 md:w-[90%] md:h-[600px] overflow-x-auto overflow-y-auto mt-4 w-[95%] mx-auto h-60">
         <Table
           striped
           bordered
           hover
           variant=".text-secondary-emphasis"
-          className="xl:text-[30px] lg:text-[25px] text-center"
+          className="xl:text-[30px] lg:text-[25px] md:text-[25px] text-center"
           style={{ width: "100em", height: "22em" }}
         >
           <thead>
@@ -643,11 +639,11 @@ export const DashSales = () => {
       </div>
 
       {/* BOTONES DE PAGINACIÓN */}
-      <div className="lg:mt-4 lg:ml-40 w-full h-auto mx-auto mt-4 mb-4">
+      <div className="lg:mt-4 lg:ml-40 md:mb-20 w-full h-auto mx-auto mt-4 mb-4">
         {(searchResults.length > 0 || sales.length > 0) && (
           <>
             <button
-              className="lg:text-[30px] ml-2"
+              className="lg:text-[30px] md:text-[30px] ml-2"
               onClick={() => handlePageChange(currentPage - 1)}
               disabled={currentPage === 1}
             >
@@ -656,7 +652,7 @@ export const DashSales = () => {
             {Array.from({ length: response.meta.pageCount }, (_, index) => (
               <button
                 key={index + 1}
-                className={`lg:text-[25px] text-black px-2  ml-2 mr-2 font-semibold shadow-md border-2 hover:bg-blue-500 ${
+                className={`lg:text-[25px] md:text-[25px] text-black px-2 ml-2 mr-2 font-semibold shadow-md border-2 hover:bg-blue-500 ${
                   currentPage === index + 1 ? "bg-blue-500 text-black" : ""
                 }`}
                 onClick={() => handlePageChange(index + 1)}
@@ -665,7 +661,7 @@ export const DashSales = () => {
               </button>
             ))}
             <button
-              className="lg:text-[30px]"
+              className="lg:text-[30px] md:text-[30px]"
               onClick={() => handlePageChange(currentPage + 1)}
               disabled={currentPage === response.meta.pageCount}
             >
@@ -673,9 +669,9 @@ export const DashSales = () => {
             </button>
           </>
         )}
-        {/* Botones para cambiar de página */}
       </div>
-      <div className="min-[320px]:block lg:hidden">
+      
+      <div className="md:mt-[130px] min-[320px]:block lg:hidden">
         <NavbarDash />
       </div>
     </>

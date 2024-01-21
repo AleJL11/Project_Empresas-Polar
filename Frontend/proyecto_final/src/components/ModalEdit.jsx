@@ -59,20 +59,20 @@ export const ModalEdit = ({
   };
 
   return (
-    <Modal show={showModal} onHide={() => setShowModal(false)}>
+    <Modal size="xl" show={showModal} onHide={() => setShowModal(false)}>
       <Modal.Header closeButton>
         <Modal.Title>Editar</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Form>
           {formFields.map((field, index) => (
-            <Form.Group key={index} controlId={`formBasic${field.name}`}>
-              <Form.Label className="mt-2">{field.label}</Form.Label>
+            <Form.Group className="min-w-[50%] xl:grid-cols-1 mb-3 flex flex-col justify-center" key={index} controlId={`formBasic${field.name}`}>
+              <Form.Label className="xl:text-4xl lg:text-3xl md:text-2xl md:mr-12 mt-2">{field.label}</Form.Label>
               {field.name === "categoria" ? (
-                <Form.Control
-                  type="select"
+                <select
                   value={formData.categoria || ""}
                   onChange={handleCategoriaChange}
+                  className="w-full lg:h-16 lg:text-3xl md:text-[25px] md:h-14 h-10 rounded-lg p-2 border-2 border-slate-400"
                 >
                   <option value="">Seleccionar Categoría</option>
                   {categoriasOptions.map((categoria, index) => (
@@ -80,12 +80,12 @@ export const ModalEdit = ({
                       {categoria.nombre}
                     </option>
                   ))}
-                </Form.Control>
+                </select>
               ) : field.name === "subcategoria" ? (
-                <Form.Control
-                  as="select"
+                <select
                   value={formData.subcategoria || ""}
                   onChange={handleSubcategoriaChange}
+                  className="w-full lg:h-16 lg:text-3xl md:text-[25px] md:h-14 h-10 rounded-lg p-2 border-2 border-slate-400"
                 >
                   <option value="">Seleccionar Subcategoría</option>
                   {categoriasOptions
@@ -95,15 +95,16 @@ export const ModalEdit = ({
                         {subcat}
                       </option>
                     ))}
-                </Form.Control>
+                </select>
               ) : (
-                <Form.Control
+                <input
                   type={field.type}
                   placeholder={field.placeholder}
                   value={formData[field.name] || ""}
                   onChange={(e) =>
                     setFormData({ ...formData, [field.name]: e.target.value })
                   }
+                  className="w-full lg:h-16 lg:text-3xl md:text-[25px] md:h-14 h-10 rounded-lg p-2 border-2 border-slate-400"
                 />
               )}
             </Form.Group>
@@ -111,12 +112,20 @@ export const ModalEdit = ({
         </Form>
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="outline-secondary" onClick={() => setShowModal(false)}>
+        <button
+          variant="outline-secondary"
+          onClick={() => setShowModal(false)}
+          className="lg:h-16 lg:text-3xl md:text-[25px] md:w-[20%] md:h-14 h-10 w-full rounded-lg p-2 border-2 border-slate-400 hover:bg-slate-400 hover:text-white"
+        >
           Cerrar
-        </Button>
-        <Button variant="outline-primary" onClick={handleSaveChanges}>
-          Guardar Cambios
-        </Button>
+        </button>
+        <button
+          variant="outline-primary"
+          onClick={handleSaveChanges}
+          className="lg:h-16 lg:text-3xl md:text-[25px] md:w-[20%] md:h-14 h-10 w-full rounded-lg p-2 border-2 border-blue-400 hover:bg-blue-400 hover:text-white"
+        >
+          Crear
+        </button>
       </Modal.Footer>
     </Modal>
   );

@@ -25,7 +25,7 @@ export const ModalEditVs = ({
     productoSubTotal: 0,
     productoTotal: 0,
   });
-  //console.log(editItemId);
+  
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -80,88 +80,108 @@ export const ModalEditVs = ({
 
   return (
     <>
-      <Modal show={show} onHide={() => setShowModal(false)}>
+      <Modal size="xl" show={show} onHide={() => setShowModal(false)}>
         <Modal.Header closeButton>
           <Modal.Title>Editar venta</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>
-            <Form.Group>
-              <Form.Label>Cliente</Form.Label>
-              <Form.Control
+            <Form.Group className="min-w-[50%] xl:grid-cols-1 mb-3 flex flex-col justify-center">
+              <Form.Label className="xl:text-4xl lg:text-3xl md:text-2xl md:mr-12 mt-2">Cliente</Form.Label>
+              <input
                 type="text"
                 value={formData.cliente}
                 onChange={(e) => handleInputChange(e, "cliente")}
+                className="w-full lg:h-16 lg:text-3xl md:text-[25px] md:h-14 h-10 rounded-lg p-2 border-2 border-slate-400"
               />
             </Form.Group>
-            <Form.Group>
-              <Form.Label>Vendedor</Form.Label>
-              <Form.Control
+
+            <Form.Group className="min-w-[50%] xl:grid-cols-1 mb-3 flex flex-col justify-center">
+              <Form.Label className="xl:text-4xl lg:text-3xl md:text-2xl md:mr-12 mt-2">Vendedor</Form.Label>
+              <input
                 type="text"
                 value={formData.vendedor}
                 onChange={(e) => handleInputChange(e, "vendedor")}
+                className="w-full lg:h-16 lg:text-3xl md:text-[25px] md:h-14 h-10 rounded-lg p-2 border-2 border-slate-400"
               />
             </Form.Group>
-            <Form.Group>
-              <Form.Label>Productos</Form.Label>
-              <Form.Control
+
+            <Form.Group className="min-w-[50%] xl:grid-cols-1 mb-3 flex flex-col justify-center">
+              <Form.Label className="xl:text-4xl lg:text-3xl md:text-2xl md:mr-12 mt-2">Productos</Form.Label>
+              <input
                 type="text"
                 value={formData.productosDetalles}
                 disabled
+                className="w-full lg:h-16 lg:text-3xl md:text-[25px] md:h-14 h-10 rounded-lg p-2 border-2 border-slate-400"
               />
             </Form.Group>
-            <Form.Group>
-              <Form.Label>N° Factura</Form.Label>
-              <Form.Control
+
+            <Form.Group className="min-w-[50%] xl:grid-cols-1 mb-3 flex flex-col justify-center">
+              <Form.Label className="xl:text-4xl lg:text-3xl md:text-2xl md:mr-12 mt-2">N° Factura</Form.Label>
+              <input
                 type="text"
                 value={formData.numeroFactura}
                 disabled
+                className="w-full lg:h-16 lg:text-3xl md:text-[25px] md:h-14 h-10 rounded-lg p-2 border-2 border-slate-400"
               />
             </Form.Group>
-            <Form.Group>
-              <Form.Label>Precios Unitarios</Form.Label>
-              <Form.Control
+
+            <Form.Group className="min-w-[50%] xl:grid-cols-1 mb-3 flex flex-col justify-center">
+              <Form.Label className="xl:text-4xl lg:text-3xl md:text-2xl md:mr-12 mt-2">Precios Unitarios</Form.Label>
+              <input
                 type="text"
                 value={formData.productosPrecioUnitario}
                 disabled
+                className="w-full lg:h-16 lg:text-3xl md:text-[25px] md:h-14 h-10 rounded-lg p-2 border-2 border-slate-400"
               />
             </Form.Group>
-            <Form.Group>
-              <Form.Label>Cantidad de Productos</Form.Label>
-              <Form.Control
+
+            <Form.Group className="min-w-[50%] xl:grid-cols-1 mb-3 flex flex-col justify-center">
+              <Form.Label className="xl:text-4xl lg:text-3xl md:text-2xl md:mr-12 mt-2">Cantidad de Productos</Form.Label>
+              <input
                 type="text"
                 value={formData.productosCantidadProductos}
                 disabled
+                className="w-full lg:h-16 lg:text-3xl md:text-[25px] md:h-14 h-10 rounded-lg p-2 border-2 border-slate-400"
               />
             </Form.Group>
-            <Form.Group>
-              <Form.Label>Subtotal por Producto</Form.Label>
-              <Form.Control
+
+            <Form.Group className="min-w-[50%] xl:grid-cols-1 mb-3 flex flex-col justify-center">
+              <Form.Label className="xl:text-4xl lg:text-3xl md:text-2xl md:mr-12 mt-2">Subtotal por Producto</Form.Label>
+              <input
                 type="text"
                 value={formData.productoSubTotal}
                 disabled
+                className="w-full lg:h-16 lg:text-3xl md:text-[25px] md:h-14 h-10 rounded-lg p-2 border-2 border-slate-400"
               />
             </Form.Group>
-            <Form.Group>
-              <Form.Label>Total</Form.Label>
-              <Form.Control
+
+            <Form.Group className="min-w-[50%] xl:grid-cols-1 mb-3 flex flex-col justify-center">
+              <Form.Label className="xl:text-4xl lg:text-3xl md:text-2xl md:mr-12 mt-2">Total</Form.Label>
+              <input
                 type="text"
                 value={formData.productoTotal}
                 disabled
+                className="w-full lg:h-16 lg:text-3xl md:text-[25px] md:h-14 h-10 rounded-lg p-2 border-2 border-slate-400"
               />
             </Form.Group>
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button
+          <button
             variant="outline-secondary"
             onClick={() => setShowModal(false)}
+            className="lg:h-16 lg:text-3xl md:text-[25px] md:w-[20%] md:h-14 h-10 w-full rounded-lg p-2 border-2 border-slate-400 hover:bg-slate-400 hover:text-white"
           >
             Cerrar
-          </Button>
-          <Button variant="outline-primary" onClick={handleFormSubmit}>
-            Guardar Cambios
-          </Button>
+          </button>
+          <button
+            variant="outline-primary"
+            onClick={handleFormSubmit}
+            className="lg:h-16 lg:text-3xl md:text-[25px] md:w-[20%] md:h-14 h-10 w-full rounded-lg p-2 border-2 border-blue-400 hover:bg-blue-400 hover:text-white"
+          >
+            Crear
+          </button>
         </Modal.Footer>
       </Modal>
     </>

@@ -148,86 +148,84 @@ export const DashVendedores = () => {
           className="
         w-full h-14 grid grid-cols-3 place-items-center"
         >
-          <div
-            className="min-[1920px]:text-[30px] xl:text-2xl lg:flex lg:flex-row lg:text-[25px] lg:gap-10
-          mr-4"
-          >
+          <div className="min-[1920px]:text-[30px] xl:text-2xl lg:flex lg:flex-row lg:text-[25px] lg:gap-10 mr-4">
             <FaArrowLeft
-              className="lg:block min-[320px]:hidden lg:text-white"
+              className="lg:block md:text-[40px] min-[320px]:hidden lg:text-white"
               onClick={handleGoBack}
             />
 
             <Link to="/perfil-usuario">
-              <FaUser className="lg:block min-[320px]:hidden lg:text-white" />
+              <FaUser className="lg:block lg:text-[35px] md:text-[40px] min-[320px]:hidden lg:text-white" />
             </Link>
 
             <CiMenuBurger
-              className="lg:hidden text-2xl text-white"
+              className="lg:hidden md:text-[40px] text-2xl text-white"
               onClick={toggleMenu}
             />
           </div>
           <div
             className="xl:ml-[50%]
-           lg:ml-[50em]
-          w-[33.33%] h-full ml-7"
+           lg:ml-[10em]
+            w-[33.33%] h-full ml-7"
           >
             <div
-              className="min-[1920px]:ml-[40em] xl:ml-[30em] lg:flex lg:w-[85%]
-            grid place-items-center mt-2"
+              className="lg:flex lg:flex-row lg:gap-8
+              grid place-items-center mt-2"
             >
               {userRole ? (
-                <img
-                  src={`http://localhost:3001/Usuarios/${imgUser}`}
-                  alt="Imagen de perfil"
-                  className="
+                <>
+                  <img
+                    src={`http://localhost:3001/Usuarios/${imgUser}`}
+                    alt="Imagen de perfil"
+                    className="xl:w-16 xl:h-16 md:w-16 md:h-16
                   w-16 h-16 rounded-full object-fill"
-                  title={userName}
-                />
+                    title={userName}
+                  />
+                  <div className="xl:text-[50px] lg:text-[35px]">
+                    <IoIosLogOut
+                      className="lg:block lg:text-white min-[320px]:hidden"
+                      onClick={handleLogout}
+                    />
+                  </div>
+                </>
               ) : (
                 <img
                   src={PerfilImg}
                   alt="Imagen de perfil por defecto"
-                  className="w-16 h-16 rounded-full object-fill"
+                  className="xl:w-16 xl:h-16 md:w-16 md:h-16 w-16 h-16 rounded-full object-fill"
                   title="Perfil por defecto"
                 />
               )}
-              <div className="lg:flex lg:justify-center lg:w-[100%] lg:ml-4 lg:gap-8">
-                <IoIosLogOut
-                  className="min-[1920px]:text-[40px] xl:text-3xl min-[320px]:hidden 
-              lg:block lg:text-2xl lg:text-white lg:mt-[-1px]"
-                  onClick={handleLogout}
-                />
-              </div>
             </div>
           </div>
         </div>
         {isMenuOpen && (
-          <div className="ml-5 bg-[#D9D9D9] w-24 h-auto absolute rounded-md z-10">
-            <div className="p-2 text-center">
+          <div className="lg:hidden md:w-[200px] md:mt-4 md:ml-10 ml-5 bg-[#00057B] w-40 h-auto absolute rounded-md z-10">
+            <div className="md:text-[30px] p-2 text-center">
               {userRole === "administrador" && (
                 <>
                   <li className="list-none mb-3">
-                    <Link className="text-black no-underline" to="/usuarios">
+                    <Link className="text-white no-underline" to="/usuarios">
                       Usuarios
                     </Link>{" "}
                   </li>
                   <li className="list-none mb-3">
-                    <Link className="text-black no-underline" to="/clientes">
+                    <Link className="text-white no-underline" to="/clientes">
                       Clientes
                     </Link>{" "}
                   </li>
                   <li className="list-none mb-3">
-                    <Link className="text-black no-underline" to="/vendedores">
+                    <Link className="text-white no-underline" to="/vendedores">
                       Vendedores
                     </Link>{" "}
                   </li>
                   <li className="list-none mb-3">
-                    <Link className="text-black no-underline" to="/productos">
+                    <Link className="text-white no-underline" to="/productos">
                       Productos
                     </Link>{" "}
                   </li>
                   <li className="list-none">
-                    <Link className="text-black no-underline" to="/ventas">
+                    <Link className="text-white no-underline" to="/ventas">
                       Ventas
                     </Link>{" "}
                   </li>
@@ -236,22 +234,22 @@ export const DashVendedores = () => {
               {userRole === "vendedor" && (
                 <>
                   <li className="list-none mb-3">
-                    <Link className="text-black no-underline" to="/clientes">
+                    <Link className="text-white no-underline" to="/clientes">
                       Clientes
                     </Link>{" "}
                   </li>
                   <li className="list-none mb-3">
-                    <Link className="text-black no-underline" to="/vendedores">
+                    <Link className="text-white no-underline" to="/vendedores">
                       Vendedores
                     </Link>{" "}
                   </li>
                   <li className="list-none mb-3">
-                    <Link className="text-black no-underline" to="/productos">
+                    <Link className="text-white no-underline" to="/productos">
                       Productos
                     </Link>{" "}
                   </li>
                   <li className="list-none">
-                    <Link className="text-black no-underline" to="/ventas">
+                    <Link className="text-white no-underline" to="/ventas">
                       Ventas
                     </Link>{" "}
                   </li>
@@ -330,7 +328,7 @@ export const DashVendedores = () => {
         </div>
 
         {isMenuOpenCRUD && (
-          <div className="xl:w-40 xl:text-[30px] lg:ml-[48%] lg:w-32 lg:text-[25px] ml-5 bg-[#D9D9D9] w-24 h-auto absolute rounded-md z-10">
+          <div className="min-[1920px]:ml-[47%] xl:ml-[45%] lg:block lg:text-[25px] lg:w-[200px] lg:ml-[42%] ml-5 bg-[#00057B] w-24 h-auto absolute rounded-md z-10 hidden">
             <div className="p-2 text-center">
               {userRole === "administrador" && (
                 <>
@@ -400,17 +398,19 @@ export const DashVendedores = () => {
       <br />
 
       {/* Parte superior con botones */}
-      <div className="lg:h-[500px] flex flex-col justify-center w-[95%] h-56 mx-auto drop-shadow-xl">
+      <div className="lg:h-[500px] md:h-[400px] flex flex-col justify-center w-[95%] h-56 mx-auto drop-shadow-xl">
         <div className="flex flex-row w-[95%] h-28 mx-auto mt-1">
           {/* Primer Boton */}
-          <div className="min-[1920px]:w-[35%] lg:h-40 bg-white w-[45%] h-24 mx-auto my-auto flex flex-row justify-center">
+          <div className="min-[1920px]:w-[35%] lg:h-40 md:h-32 bg-white w-[45%] h-24 mx-auto my-auto flex flex-row justify-center">
             <CiUser className="lg:mt-12 text-2xl h-10 w-10 mt-7 ml-2" />
             <div className="flex flex-col w-[70%] h-full justify-center items-center">
               <div className="w-full h-[50%] text-center">
-                <p className="xl:text-[30px] lg:text-[30px] mt-1">Clientes:</p>
+                <p className="xl:text-[30px] lg:text-[30px] md:text-[25px] mt-1">
+                  Clientes:
+                </p>
               </div>
               <button
-                className="xl:text-[30px] xl:w-[40%] lg:w-32 lg:h-16 lg:text-[25px] bg-red-500 w-20 text-white text-center text-sm rounded-2xl p-1"
+                className="xl:text-[30px] xl:w-[40%] lg:w-32 lg:h-16 lg:text-[25px] md:text-[25px] md:w-28 md:h-14 bg-red-500 w-20 text-white text-center text-sm rounded-2xl p-1"
                 onClick={() => openCreateCl()}
               >
                 Ver más
@@ -418,14 +418,16 @@ export const DashVendedores = () => {
             </div>
           </div>
           {/* Segundo Boton */}
-          <div className="lg:h-40 bg-white w-[45%] h-24 mx-auto my-auto flex flex-row justify-center">
+          <div className="lg:h-40 md:h-32 bg-white w-[45%] h-24 mx-auto my-auto flex flex-row justify-center">
             <FiShoppingBag className="lg:mt-12 text-2xl h-10 w-10 mt-7 ml-2" />
             <div className="flex flex-col w-[70%] h-full justify-center items-center">
               <div className="w-full h-[50%] text-center">
-                <p className="xl:text-[30px] lg:text-[30px] mt-1">Productos:</p>
+                <p className="xl:text-[30px] lg:text-[30px] md:text-[25px] mt-1">
+                  Productos:
+                </p>
               </div>
               <button
-                className="xl:text-[30px] xl:w-[40%] lg:w-32 lg:h-16 lg:text-[25px] bg-red-500 w-20 text-white text-center text-sm rounded-2xl p-1"
+                className="xl:text-[30px] xl:w-[40%] lg:w-32 lg:h-16 lg:text-[25px] md:text-[25px] md:w-28 md:h-14 bg-red-500 w-20 text-white text-center text-sm rounded-2xl p-1"
                 onClick={() => openCreatePr()}
               >
                 Ver más
@@ -434,14 +436,16 @@ export const DashVendedores = () => {
           </div>
         </div>
         {/* Tercer Botón */}
-        <div className="lg:h-40 lg:mt-20 bg-white w-[45%] h-24 mx-auto flex flex-row justify-center">
+        <div className="lg:h-40 lg:mt-20 md:h-32 md:mt-14 bg-white w-[45%] h-24 mx-auto flex flex-row justify-center">
           <CiShoppingTag className="lg:mt-12 text-2xl h-10 w-10 mt-7 ml-2" />
           <div className="flex flex-col w-[70%] h-full justify-center items-center">
             <div className="w-full h-[50%] text-center">
-              <p className="xl:text-[30px] lg:text-[30px] mt-1">Ventas:</p>
+              <p className="xl:text-[30px] lg:text-[30px] md:text-[25px] mt-1">
+                Ventas:
+              </p>
             </div>
             <button
-              className="xl:text-[30px] xl:w-[40%] lg:w-32 lg:h-16 lg:text-[25px] bg-red-500 w-20 text-white text-center text-sm rounded-2xl p-1"
+              className="xl:text-[30px] xl:w-[40%] lg:w-32 lg:h-16 lg:text-[25px] md:text-[25px] md:w-28 md:h-14 bg-red-500 w-20 text-white text-center text-sm rounded-2xl p-1"
               onClick={() => openCreateVs()}
             >
               Ver más
@@ -453,15 +457,17 @@ export const DashVendedores = () => {
       {/* Sección de filtros de ventas */}
       <div
         className="xl:w-[80%] xl:h-[80%]
-            lg:h-[20em] grid grid-rows grid-flow-col-1 h-60 w-[90%] mx-auto mt-4 drop-shadow-2xl bg-white"
+            lg:h-[20em] md:h-[300px] grid grid-rows grid-flow-col-1 h-60 w-[90%] mx-auto mt-4 drop-shadow-2xl bg-white"
       >
         <div className="xl:text-xl grid grid-col-1 drop-shadow-2xl h-auto w-[90%] mx-auto mt-[5%] p-2">
-          <h5 className="xl:text-[35px] lg:text-[30px] p-2">Filtrar Datos:</h5>
+          <h5 className="xl:text-[35px] lg:text-[30px] md:text-[25px] p-2">
+            Filtrar Datos:
+          </h5>
           <div className="xl:text-xl w-full flex space-x-4">
             <div className="w-1/2 p-2">
               <label
                 htmlFor="fechaInicio"
-                className="xl:text-[30px] lg:text-[25px] block text-md font-medium text-gray-700 mb-2"
+                className="xl:text-[30px] lg:text-[25px] md:text-[25px] block text-md font-medium text-gray-700 mb-2"
               >
                 Desde:
               </label>
@@ -471,13 +477,13 @@ export const DashVendedores = () => {
                 name="fechaInicio"
                 value={fechaInicio}
                 onChange={(e) => setFechaInicio(e.target.value)}
-                className="xl:text-[28px] xl:h-16 lg:text-[25px] mt-1 -ml-2 focus:ring-indigo-500 focus:border-indigo-500 block w-full py-2 px-1 shadow-sm sm:text-sm border-gray-300 rounded-md"
+                className="xl:text-[28px] xl:h-16 lg:text-[25px] md:text-[25px] md:h-14 mt-1 -ml-2 focus:ring-indigo-500 focus:border-indigo-500 block w-full py-2 px-1 shadow-sm sm:text-sm border-gray-300 rounded-md"
               />
             </div>
             <div className="w-1/2 p-2">
               <label
                 htmlFor="fechaFin"
-                className="xl:text-[30px] lg:text-[25px] block text-md font-medium text-gray-700 mb-2"
+                className="xl:text-[30px] lg:text-[25px] md:text-[25px] block text-md font-medium text-gray-700 mb-2"
               >
                 Hasta:
               </label>
@@ -487,13 +493,13 @@ export const DashVendedores = () => {
                 name="fechaFin"
                 value={fechaFin}
                 onChange={(e) => setFechaFin(e.target.value)}
-                className="xl:text-[28px] xl:h-16 lg:text-[25px] mt-1 -ml-2 focus:ring-indigo-500 focus:border-indigo-500 block w-full py-2 px-1 shadow-sm sm:text-sm border-gray-300 rounded-md"
+                className="xl:text-[28px] xl:h-16 lg:text-[25px] md:text-[25px] md:h-14 mt-1 -ml-2 focus:ring-indigo-500 focus:border-indigo-500 block w-full py-2 px-1 shadow-sm sm:text-sm border-gray-300 rounded-md"
               />
             </div>
           </div>
         </div>
         <div className="xl:text-base flex flex-row mx-auto text-center gap-1">
-          <button className="xl:text-[30px] xl:w-[10em] xl:h-[2em] lg:w-[200px] lg:text-[25px] bg-red-500 hover:bg-red-400 h-10 w-32  text-center text-white rounded-2xl">
+          <button className="xl:text-[30px] xl:w-[10em] xl:h-[2em] lg:w-[200px] lg:text-[25px] md:text-[25px] md:h-14 bg-red-500 hover:bg-red-400 h-10 w-32  text-center text-white rounded-2xl">
             {" "}
             Ver
           </button>
@@ -502,14 +508,14 @@ export const DashVendedores = () => {
       </div>
 
       {/* TABLA DE INFORMACIÓN */}
-      <div className="lg:w-[90%] lg:h-auto grid grid-col-2 bg-white drop-shadow-2xl h-[60%] w-[90%] mx-auto mt-[8%] overflow-x-auto overflow-y-auto">
+      <div className="xl:h-[770px] lg:h-[600px] md:mb-14 md:w-[90%] md:h-[200px] overflow-x-auto overflow-y-auto mt-4 w-[95%] mx-auto h-60">
         <Table
           striped
           bordered
           hover
           size="sm"
           style={{ width: "30em", height: "5em" }}
-          className="xl:mx-auto xl:text-[30px] lg:text-[25px] mx-auto text-center"
+          className="xl:text-[30px] lg:text-[25px] md:text-[25px] text-center mx-auto"
         >
           <thead>
             <tr>
@@ -536,18 +542,18 @@ export const DashVendedores = () => {
       <div className="grid grid-rows grid-flow-col-1 w-[95%] mx-auto mt-4 drop-shadow-2xl">
         {/* Filtros adicionales para Ventas */}
         <div
-          className="min-[1920px]:h-[400px] xl:w-[80%] xl:h-[350px]
-            lg:h-[20em] grid grid-rows grid-flow-col-1 h-60 w-[90%] mx-auto mt-4 drop-shadow-2xl bg-white"
+          className="xl:w-[80%] xl:h-[80%]
+            lg:h-[20em] md:h-[300px] grid grid-rows grid-flow-col-1 h-60 w-[90%] mx-auto mt-4 drop-shadow-2xl bg-white"
         >
           <div className="xl:text-xl grid grid-col-1 drop-shadow-2xl h-auto w-[90%] mx-auto mt-[5%] p-2">
-            <h5 className="xl:text-[35px] lg:text-[30px] p-2">
+            <h5 className="xl:text-[35px] lg:text-[30px] md:text-[25px] p-2">
               Filtrar Datos:
             </h5>
             <div className="xl:text-xl w-full flex space-x-4">
               <div className="w-1/2 p-2">
                 <label
                   htmlFor="fechaInicio"
-                  className="xl:text-[30px] lg:text-[25px] block text-md font-medium text-gray-700 mb-2"
+                  className="xl:text-[30px] lg:text-[25px] md:text-[25px] block text-md font-medium text-gray-700 mb-2"
                 >
                   Desde:
                 </label>
@@ -557,13 +563,13 @@ export const DashVendedores = () => {
                   name="fechaInicio"
                   value={fechaInicio}
                   onChange={(e) => setFechaInicio(e.target.value)}
-                  className="xl:text-[28px] xl:h-16 lg:text-[25px] mt-1 -ml-2 focus:ring-indigo-500 focus:border-indigo-500 block w-full py-2 px-1 shadow-sm sm:text-sm border-gray-300 rounded-md"
+                  className="xl:text-[28px] xl:h-16 lg:text-[25px] md:text-[25px] md:h-14 mt-1 -ml-2 focus:ring-indigo-500 focus:border-indigo-500 block w-full py-2 px-1 shadow-sm sm:text-sm border-gray-300 rounded-md"
                 />
               </div>
               <div className="w-1/2 p-2">
                 <label
                   htmlFor="fechaFin"
-                  className="xl:text-[30px] lg:text-[25px] block text-md font-medium text-gray-700 mb-2"
+                  className="xl:text-[30px] lg:text-[25px] md:text-[25px] block text-md font-medium text-gray-700 mb-2"
                 >
                   Hasta:
                 </label>
@@ -573,13 +579,13 @@ export const DashVendedores = () => {
                   name="fechaFin"
                   value={fechaFin}
                   onChange={(e) => setFechaFin(e.target.value)}
-                  className="xl:text-[28px] xl:h-16 lg:text-[25px] mt-1 -ml-2 focus:ring-indigo-500 focus:border-indigo-500 block w-full py-2 px-1 shadow-sm sm:text-sm border-gray-300 rounded-md"
+                  className="xl:text-[28px] xl:h-16 lg:text-[25px] md:text-[25px] md:h-14 mt-1 -ml-2 focus:ring-indigo-500 focus:border-indigo-500 block w-full py-2 px-1 shadow-sm sm:text-sm border-gray-300 rounded-md"
                 />
               </div>
             </div>
           </div>
           <div className="xl:text-base flex flex-row mx-auto text-center gap-1">
-            <button className="xl:text-[30px] xl:w-[10em] xl:h-[2em] lg:w-[200px] lg:text-[25px] bg-red-500 hover:bg-red-400 h-10 w-32  text-center text-white rounded-2xl">
+            <button className="xl:text-[30px] xl:w-[10em] xl:h-[2em] lg:w-[200px] lg:text-[25px] md:text-[25px] md:h-14 bg-red-500 hover:bg-red-400 h-10 w-32  text-center text-white rounded-2xl">
               {" "}
               Ver
             </button>
@@ -590,9 +596,11 @@ export const DashVendedores = () => {
         <br />
 
         {/* Gráfico de Vendedores */}
-        <div className="xl:w-[80%] lg:h-[800px] w-[90%] h-60 bg-white text-center mx-auto mt-4 drop-shadow-2xl">
-          <p className="xl:text-[40px] lg:text-[25px] p-2 text-lg">Vendedores</p>
-            <comp.Graficos className="mx-auto" dataPrint={dataPrint} />
+        <div className="xl:w-[80%] lg:h-[800px] md:h-auto w-[90%] h-60 bg-white text-center mx-auto mt-4 drop-shadow-2xl">
+          <p className="xl:text-[40px] lg:text-[25px] md:text-[25px] p-2 text-lg">
+            Vendedores
+          </p>
+          <comp.Graficos className="mx-auto" dataPrint={dataPrint} />
         </div>
       </div>
 
