@@ -6,6 +6,44 @@ const Product = require("../Model/ModelPr"),
   fs = require("fs"),
   { isValidObjectId } = require("mongoose");
 
+// Obtener las categorias y subcategorias
+routerPr.get("/categorias", async (req, res) => {
+  try {
+    const categoriasConSubcategorias = {};
+
+    const categoriasValidas = {
+      "Alimentos Polar": [
+        "Salsas y Untables",
+        "Cereales",
+        "Aceites",
+        "Granos y Leguminosas",
+        "Modificadores Lacteos",
+        "Yogurt",
+        "Galletas y Postres",
+        "Bebidas y Alimentos en polvo",
+        "Proteinas",
+        "Limpieza",
+        "Mascotas",
+      ],
+      "PepsiCola Venezuela": [
+        "Bebidas Carbonatadas",
+        "Bebidas No Carbonatadas",
+      ],
+      "Cerveceria Polar": ["Cerveza", "Malta", "Vinos", "Sangría"],
+    };
+
+    for (const categoria in categoriasValidas) {
+      if (!categoriasConSubcategorias[categoria]) {
+        categoriasConSubcategorias[categoria] = categoriasValidas[categoria];
+      }
+    }
+
+    res.json(categoriasConSubcategorias);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
 // Obtener todos los productos
 routerPr.get("/", async (req, res) => {
   const page = parseInt(req.query.page) || 1;
@@ -21,15 +59,15 @@ routerPr.get("/", async (req, res) => {
           { deleted: false },
           {
             $or: [
-              { nombre: searchRegex }, // Match against the 'nombre' field
+              { nombre: searchRegex },
               {
-                "categorias.nombre": { $regex: searchRegex, $options: "i" }, // Match against the 'categoria' field
+                "categorias.nombre": { $regex: searchRegex, $options: "i" },
               },
               {
                 "categorias.subcategorias": {
                   $regex: searchRegex,
                   $options: "i",
-                }, // Match against the 'subcategoria' field
+                },
               },
             ],
           },
@@ -37,8 +75,8 @@ routerPr.get("/", async (req, res) => {
       };
     }
 
-    const totalDocs = await Product.countDocuments(query); // Obtener el número total de documentos según la búsqueda
-    const pageCount = Math.ceil(totalDocs / limit); // Calcular el número total de páginas
+    const totalDocs = await Product.countDocuments(query);
+    const pageCount = Math.ceil(totalDocs / limit);
 
     const options = {
       page,
@@ -134,12 +172,14 @@ routerPr.post("/", imgProductos.single("imagen"), async (req, res) => {
 
       const [nombreVendedor, apellidoVendedor] = vendedor.split(" ");
 
-      const vendedorUsuario = await User.findOne({ nombre: nombreVendedor, apellido: apellidoVendedor, deleted: false });
+      const vendedorUsuario = await User.findOne({
+        nombre: nombreVendedor,
+        apellido: apellidoVendedor,
+        deleted: false,
+      });
 
       if (!vendedorUsuario) {
-        return res
-          .status(400)
-          .json({ message: "Vendedor no encontrado" });
+        return res.status(400).json({ message: "Vendedor no encontrado" });
       }
 
       const product = new Product({
@@ -175,10 +215,17 @@ routerPr.patch("/:id", imgProductos.single("imagen"), async (req, res) => {
 
     const [nombreVendedor, apellidoVendedor] = vendedor.split(" ");
 
-    const userVendedor = await User.findOne({ nombre: nombreVendedor, apellido: apellidoVendedor, deleted: false });
+    const userVendedor = await User.findOne({
+      nombre: nombreVendedor,
+      apellido: apellidoVendedor,
+      deleted: false,
+    });
 
     if (!userVendedor) {
-      return res.status(400).json({ message: "El nombre y apellido del vendedor no coinciden con un usuario existente" });
+      return res.status(400).json({
+        message:
+          "El nombre y apellido del vendedor no coinciden con un usuario existente",
+      });
     }
 
     // Verifica si se ha subido un archivo
@@ -262,17 +309,26 @@ routerPr.patch("/vendedor/:id", async (req, res) => {
     vendedor = req.body.vendedor;
     const [nombreVendedor, apellidoVendedor] = vendedor.split(" ");
 
-    const userVendedor = await User.findOne({ nombre: nombreVendedor, apellido: apellidoVendedor, deleted: false });
+    const userVendedor = await User.findOne({
+      nombre: nombreVendedor,
+      apellido: apellidoVendedor,
+      deleted: false,
+    });
 
     if (!userVendedor) {
-      return res.status(400).json({ message: "El nombre y apellido del vendedor no coinciden con un usuario existente" });
+      return res.status(400).json({
+        message:
+          "El nombre y apellido del vendedor no coinciden con un usuario existente",
+      });
     }
 
     const updatedProduct = {
-      vendedor: `${nombreVendedor} ${apellidoVendedor}`
+      vendedor: `${nombreVendedor} ${apellidoVendedor}`,
     };
 
-    const product = await Product.findByIdAndUpdate(id, updatedProduct, { new: true });
+    const product = await Product.findByIdAndUpdate(id, updatedProduct, {
+      new: true,
+    });
 
     if (!product) {
       return res.status(404).json({ message: "Producto no encontrado" });
@@ -281,7 +337,9 @@ routerPr.patch("/vendedor/:id", async (req, res) => {
     res.json(product);
   } catch (error) {
     console.error("Error al actualizar el vendedor del producto:", error);
-    res.status(500).json({ message: "Error al actualizar el vendedor del producto" });
+    res
+      .status(500)
+      .json({ message: "Error al actualizar el vendedor del producto" });
   }
 });
 

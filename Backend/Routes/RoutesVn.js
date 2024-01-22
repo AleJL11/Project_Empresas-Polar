@@ -379,12 +379,22 @@ routerVn.post("/", insertVenta);
 // Actualizar un pedido
 routerVn.patch("/:id", async (req, res) => {
   try {
-    const clienteUsuario = req.body.cliente
-      ? await User.findOne({ nombre: req.body.cliente })
-      : null; // Buscar el cliente si se proporciona
-    const vendedorUsuario = req.body.vendedor
-      ? await User.findOne({ nombre: req.body.vendedor })
-      : null; // Buscar el vendedor si se proporciona
+    let clienteUsuario = null;
+    let vendedorUsuario = null;
+
+    if (req.body.cliente) {
+      const clienteData = req.body.cliente.split(' ');
+      const nombre = clienteData[0];
+      const apellido = clienteData[1];
+      clienteUsuario = await User.findOne({ nombre, apellido });
+    }
+
+    if (req.body.vendedor) {
+      const vendedorData = req.body.vendedor.split(' ');
+      const nombre = vendedorData[0];
+      const apellido = vendedorData[1];
+      vendedorUsuario = await User.findOne({ nombre, apellido });
+    }
 
     let ventaData = await Venta.findById(req.params.id);
 
@@ -393,11 +403,11 @@ routerVn.patch("/:id", async (req, res) => {
     }
 
     if (vendedorUsuario) {
-      ventaData.vendedor = vendedorUsuario._id; // Actualizar el vendedor si se proporciona
+      ventaData.vendedor = vendedorUsuario._id;
     }
 
     if (clienteUsuario) {
-      ventaData.cliente = clienteUsuario._id; // Actualizar el cliente si se proporciona
+      ventaData.cliente = clienteUsuario._id;
     }
 
     let updatedVenta = await ventaData.save();

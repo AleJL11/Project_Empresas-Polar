@@ -145,7 +145,7 @@ export const ClienteReporte = () => {
           </div>
         </div>
         <div className="xl:text-base flex flex-row mx-auto text-center gap-1">
-          <button className="xl:text-[30px] xl:w-[10em] xl:h-[2em] lg:w-[200px] lg:text-[25px] md:text-[25px] md:h-14 bg-red-500 hover:bg-red-400 h-10 w-32  text-center text-white rounded-2xl" onClick={exportToExcel}>
+          <button className="xl:text-[30px] xl:w-[10em] xl:h-[2em] lg:w-[200px] lg:text-[25px] md:text-[25px] md:h-14 bg-red-500 hover:bg-red-400 h-10 w-32  text-center text-white rounded-2xl" onClick={() => exportToExcel(dataFinal)}>
             {" "}
             Ver
           </button>

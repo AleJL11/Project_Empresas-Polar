@@ -146,7 +146,7 @@ export const DashVendedores = () => {
       >
         <div
           className="
-        w-full h-14 grid grid-cols-3 place-items-center"
+        w-full h-14 grid grid-cols-2 place-items-center space-between"
         >
           <div className="min-[1920px]:text-[30px] xl:text-2xl lg:flex lg:flex-row lg:text-[25px] lg:gap-10 mr-4">
             <FaArrowLeft

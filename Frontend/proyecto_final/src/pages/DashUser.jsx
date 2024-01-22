@@ -14,7 +14,6 @@ import { useAuth } from "../components/AuthContext";
 
 // React Bootstrap
 import Table from "react-bootstrap/Table";
-import Button from "react-bootstrap/Button";
 
 // React Router Dom
 import { Link, useNavigate } from "react-router-dom";
@@ -291,9 +290,7 @@ export const DashUser = () => {
           className="
         w-full h-14 grid grid-cols-3 place-items-center"
         >
-          <div
-            className="min-[1920px]:text-[30px] xl:text-2xl lg:flex lg:flex-row lg:text-[25px] lg:gap-10 mr-4"
-          >
+          <div className="min-[1920px]:text-[30px] xl:text-2xl lg:flex lg:flex-row lg:text-[25px] lg:gap-10 mr-4">
             <FaArrowLeft
               className="lg:block md:text-[40px] min-[320px]:hidden lg:text-white"
               onClick={handleGoBack}
@@ -518,6 +515,11 @@ export const DashUser = () => {
                       Clientes
                     </Link>
                   </li>
+                  <li className="list-none mb-3">
+                    <Link className="text-white no-underline" to="/vendedores">
+                      Vendedores
+                    </Link>{" "}
+                  </li>
                   <li
                     className="min-[320px]:hidden lg:block
           list-none text-white tracking-wide"
@@ -539,22 +541,22 @@ export const DashUser = () => {
               {userRole === "vendedor" && (
                 <>
                   <li className="list-none mb-3">
-                    <Link className="text-black no-underline" to="/clientes">
+                    <Link className="text-white no-underline" to="/clientes">
                       Clientes
                     </Link>{" "}
                   </li>
                   <li className="list-none mb-3">
-                    <Link className="text-black no-underline" to="/vendedores">
+                    <Link className="text-white no-underline" to="/vendedores">
                       Vendedores
                     </Link>{" "}
                   </li>
                   <li className="list-none mb-3">
-                    <Link className="text-black no-underline" to="/productos">
+                    <Link className="text-white no-underline" to="/productos">
                       Productos
                     </Link>{" "}
                   </li>
                   <li className="list-none">
-                    <Link className="text-black no-underline" to="/ventas">
+                    <Link className="text-white no-underline" to="/ventas">
                       Ventas
                     </Link>{" "}
                   </li>

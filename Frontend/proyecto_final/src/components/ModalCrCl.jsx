@@ -172,7 +172,7 @@ export const ModalCrCl = ({ show, setShowModalCreateCl, Api, updateData }) => {
   const handleSaveChanges = async () => {
     try {
       const formDataToSend = new FormData();
-      formDataToSend.append("rol", formData.rol);
+      formDataToSend.append("rol", "cliente");
       formDataToSend.append("nombre", formData.nombre);
       formDataToSend.append("apellido", formData.apellido);
       formDataToSend.append("cedula", formData.cedula);

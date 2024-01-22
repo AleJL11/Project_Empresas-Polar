@@ -535,6 +535,11 @@ export const DashClient = () => {
                       Clientes
                     </Link>
                   </li>
+                  <li className="list-none mb-3">
+                    <Link className="text-white no-underline" to="/vendedores">
+                      Vendedores
+                    </Link>{" "}
+                  </li>
                   <li
                     className="min-[320px]:hidden lg:block
           list-none text-white tracking-wide"
@@ -556,22 +561,22 @@ export const DashClient = () => {
               {userRole === "vendedor" && (
                 <>
                   <li className="list-none mb-3">
-                    <Link className="text-black no-underline" to="/clientes">
+                    <Link className="text-white no-underline" to="/clientes">
                       Clientes
                     </Link>{" "}
                   </li>
                   <li className="list-none mb-3">
-                    <Link className="text-black no-underline" to="/vendedores">
+                    <Link className="text-white no-underline" to="/vendedores">
                       Vendedores
                     </Link>{" "}
                   </li>
                   <li className="list-none mb-3">
-                    <Link className="text-black no-underline" to="/productos">
+                    <Link className="text-white no-underline" to="/productos">
                       Productos
                     </Link>{" "}
                   </li>
                   <li className="list-none">
-                    <Link className="text-black no-underline" to="/ventas">
+                    <Link className="text-white no-underline" to="/ventas">
                       Ventas
                     </Link>{" "}
                   </li>

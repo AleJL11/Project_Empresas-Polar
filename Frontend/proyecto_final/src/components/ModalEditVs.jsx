@@ -61,7 +61,7 @@ export const ModalEditVs = ({
         cliente: formData.cliente,
         vendedor: formData.vendedor,
       };
-
+      console.log(formDataToSend);
       const response = await axios.patch(
         `http://localhost:3001/ventas/${editItemId}`,
         formDataToSend
